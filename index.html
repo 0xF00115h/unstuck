@@ -3450,7 +3450,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
  <p class="workflow-lead">
   The priority is a useful engineering outcome. Work can begin as hands-on team support, a defined engineering project, or a smaller diagnostic <a href="#where">entry point</a> and expand where useful.
  </p>
- <div class="engagement-grid">
+ <div class="engagement-grid" data-nav-align-target>
   <article class="engagement-card" id="offer-development-integration">
    <div class="engagement-kicker">Primary offer / available now</div>
    <h3>Development &amp; integration support</h3>
@@ -3517,7 +3517,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
  <p class="workflow-lead">
   Three examples showing development ownership across electronics, embedded control, RF integration, and validation infrastructure. <a href="#proof">Detailed evidence</a> remains available further down the page.
  </p>
- <div class="engagement-grid">
+ <div class="engagement-grid" data-nav-align-target>
   <article class="engagement-card project-case-card" data-evidence-return-source>
    <div class="engagement-kicker">Hardware + firmware + operator tooling</div>
    <h3>Battery test and control platform</h3>
@@ -3566,7 +3566,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
  <p class="workflow-lead">
   These are common technical situations rather than separate service packages. Each can sit inside a wider development assignment, become a defined project, or provide a bounded first step where the immediate uncertainty needs to be reduced.
  </p>
- <div class="wf-shell wf-shell-split" data-tabs="">
+ <div class="wf-shell wf-shell-split" data-tabs="" data-nav-align-target>
   <div class="wf-toolbar">
    <span class="wf-dot wf-red"></span>
    <span class="wf-dot wf-amber"></span>
@@ -4281,7 +4281,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
  <p class="workflow-lead">
   Technical evidence behind the development cases and offer, linked to supporting work <a href="#chronology">history</a>.
  </p>
- <div class="wf-shell wf-shell-split" data-tabs="">
+ <div class="wf-shell wf-shell-split" data-tabs="" data-nav-align-target>
   <div class="wf-toolbar">
    <span class="wf-dot wf-red">
    </span>
@@ -5137,7 +5137,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
    The chronology shows the industrial foundation behind the offer and the continuing project evidence: RF validation widening into development, embedded tooling, power and board work, system integration, automation, and hands-on hardware-facing engineering. <a href="#contact">Discuss options</a>
   </p>
  </div>
- <div class="timeline-shell">
+ <div class="timeline-shell" data-nav-align-target>
   <div class="timeline-toolbar">
    <span class="wf-dot wf-red"></span>
    <span class="wf-dot wf-amber"></span>
@@ -5667,7 +5667,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   </div>
  </div>
 </section>
-<section class="section cta" id="contact">
+<section class="section cta" id="contact" data-nav-align-target>
  <div class="contact-layout">
   <div class="contact-copy">
  <h2>
@@ -7631,5 +7631,76 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   window.addEventListener('scroll', placeOpen, { passive:true });
 })();
 </script>
+
+<script id="preferred-section-anchor-alignment">
+(function(){
+  const desktopSidebarQuery = window.matchMedia('(min-width: 981px)');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const preferredTargetForHash = (href) => {
+    if (!href || href.charAt(0) !== '#') return null;
+    const rawId = href.slice(1);
+    if (!rawId) return null;
+    let id = rawId;
+    try { id = decodeURIComponent(rawId); } catch (_) {}
+    const section = document.getElementById(id);
+    if (!section || section.tagName !== 'SECTION') return null;
+    const preferred = section.matches('[data-nav-align-target]') ? section : section.querySelector('[data-nav-align-target]');
+    return preferred ? { section, preferred } : null;
+  };
+
+  const sidebarAlignmentY = () => {
+    if (!desktopSidebarQuery.matches) return null;
+    const sidebar = document.querySelector('.sidebar');
+    if (!sidebar) return null;
+    const style = window.getComputedStyle(sidebar);
+    if (style.position !== 'sticky' && style.position !== 'fixed') return null;
+    const cssTop = Number.parseFloat(style.top);
+    if (Number.isFinite(cssTop)) return Math.max(0, cssTop);
+    return Math.max(0, sidebar.getBoundingClientRect().top);
+  };
+
+  const scrollPreferredTarget = (href, behavior) => {
+    const pair = preferredTargetForHash(href);
+    const alignY = sidebarAlignmentY();
+    if (!pair || alignY === null) return false;
+    const targetY = window.scrollY + pair.preferred.getBoundingClientRect().top - alignY;
+    window.scrollTo({
+      top: Math.max(0, Math.round(targetY)),
+      behavior: behavior || (reducedMotionQuery.matches ? 'auto' : 'smooth')
+    });
+    return true;
+  };
+
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (!preferredTargetForHash(href) || sidebarAlignmentY() === null) return;
+
+    event.preventDefault();
+    if (window.location.hash !== href) history.pushState(null, '', href);
+    scrollPreferredTarget(href);
+  });
+
+  window.addEventListener('hashchange', () => {
+    if (!window.location.hash) return;
+    window.requestAnimationFrame(() => scrollPreferredTarget(window.location.hash, 'auto'));
+  });
+
+  const alignInitialHash = () => {
+    if (!window.location.hash) return;
+    window.setTimeout(() => scrollPreferredTarget(window.location.hash, 'auto'), 0);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', alignInitialHash, { once:true });
+  } else {
+    alignInitialHash();
+  }
+})();
+</script>
+
 </body>
 </html>
