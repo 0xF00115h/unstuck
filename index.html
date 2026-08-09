@@ -3049,6 +3049,12 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 .evidence-choice-context b{display:block;margin-top:2px;font-size:11px;line-height:1.25;letter-spacing:0;text-transform:none;color:rgba(255,240,209,.88);font-weight:650;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .evidence-choice-return{appearance:none;border:0;background:transparent;color:rgba(255,240,209,.72);font:inherit;font-size:12px;line-height:1;padding:0 0 0 5px;cursor:pointer;vertical-align:baseline;}
 .evidence-choice-return:hover,.evidence-choice-return:focus{color:#fff0d1;outline:none;text-decoration:underline;text-underline-offset:2px;}
+.evidence-choice-context-row{display:flex;align-items:baseline;gap:7px;margin-top:2px;min-width:0;}
+.evidence-choice-context-row b{margin-top:0;min-width:0;flex:1 1 auto;}
+.evidence-choice-context-row .evidence-choice-return{flex:0 0 auto;padding-left:0;white-space:nowrap;}
+.evidence-choice-context-next-row{display:flex;justify-content:flex-end;margin-top:2px;min-width:0;}
+.evidence-choice-context .evidence-choice-forward{display:inline !important;flex:0 0 auto !important;margin:0 !important;padding:0 !important;border:0 !important;border-radius:0 !important;background:transparent !important;color:rgba(255,240,209,.72) !important;font:inherit !important;font-size:10px !important;font-weight:500 !important;line-height:1.25 !important;text-decoration:none !important;white-space:nowrap !important;}
+.evidence-choice-context .evidence-choice-forward:hover,.evidence-choice-context .evidence-choice-forward:focus{color:#fff0d1 !important;background:transparent !important;border:0 !important;outline:none !important;text-decoration:underline !important;text-underline-offset:2px !important;}
 .evidence-choice-overlay{
   position:fixed !important;
   z-index:5000 !important;
@@ -3267,12 +3273,38 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 .brand-wordmark--topbar{width:145px;flex:0 0 145px}
 .topbar-role{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .sidebar-brand-lockup{display:flex;align-items:center;gap:12px;margin:0 0 18px;min-width:0}
+.sidebar-personal-intro{margin:0 0 7px;max-width:28ch;color:var(--muted);font:600 11.5px/1.38 Inter,Arial,sans-serif;letter-spacing:.025em}
 .company-symbol--sidebar{width:84px;height:72px;flex:0 0 84px}
 .brand-wordmark--sidebar{width:min(190px,calc(100% - 96px));flex:0 1 190px}
 .personal-name-lockup{display:flex;align-items:center;gap:10px;margin:0 0 10px;min-width:0}
 .personal-name-lockup .name{margin:0;min-width:0}
 .mrb-insignia{display:block;object-fit:cover;border-radius:50%;background:#fff;border:1px solid rgba(19,40,67,.24);box-shadow:0 6px 16px rgba(0,0,0,.14)}
 .mrb-insignia--name{width:40px;height:40px;flex:0 0 40px}
+.mrb-identity-popover{position:relative;flex:0 0 auto;margin:0;padding:0}
+.mrb-identity-popover>summary{display:block;list-style:none;margin:0;padding:0;border-radius:50%;cursor:pointer}
+.mrb-identity-popover>summary::-webkit-details-marker{display:none}
+.mrb-identity-popover>summary::marker{content:""}
+.mrb-identity-popover>summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mrb-identity-popover>summary .mrb-insignia{transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.mrb-identity-popover>summary:hover .mrb-insignia,.mrb-identity-popover[open]>summary .mrb-insignia{transform:translateY(-1px);border-color:rgba(19,40,67,.42);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.mrb-identity-card{position:fixed;z-index:2147483000;inset:auto;left:12px;top:12px;right:auto;bottom:auto;margin:0;width:min(286px,calc(100vw - 24px));padding:10px 12px;border:1px solid rgba(19,40,67,.18);border-radius:10px;background:rgba(250,247,239,.995);box-shadow:0 14px 36px rgba(0,0,0,.24);color:var(--ink);font:500 12px/1.42 Inter,Arial,sans-serif;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-3px);transition:opacity .12s ease,transform .12s ease,visibility .12s ease;--mrb-arrow-x:24px}
+.mrb-identity-card::backdrop{background:transparent}
+.mrb-identity-card::before{content:"";position:absolute;left:calc(var(--mrb-arrow-x) - 5px);top:-6px;width:10px;height:10px;background:inherit;border-left:1px solid rgba(19,40,67,.18);border-top:1px solid rgba(19,40,67,.18);transform:rotate(45deg)}
+.mrb-identity-card.is-above::before{top:auto;bottom:-6px;border-left:0;border-top:0;border-right:1px solid rgba(19,40,67,.18);border-bottom:1px solid rgba(19,40,67,.18)}
+.mrb-identity-card:popover-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.mrb-identity-popover[open] .mrb-identity-card:not([popover]){opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.mrb-identity-card p{margin:0 0 7px}
+.mrb-identity-card strong{font-weight:700}
+.mrb-identity-card a{display:inline-block;font-weight:700;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+.mrb-identity-card a:hover,.mrb-identity-card a:focus-visible{border-bottom-color:transparent}
+.mrb-identity-email{font-weight:650 !important;white-space:nowrap}
+.mrb-identity-links{display:flex;align-items:baseline;gap:0;font-size:12px;line-height:1.2}
+.mrb-identity-links a{border-bottom:0;padding:0}
+.mrb-identity-links a:hover,.mrb-identity-links a:focus-visible{text-decoration:underline;text-underline-offset:2px}
+.mrb-identity-shortcuts{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 6px;margin-top:7px;padding-top:7px;border-top:1px solid rgba(19,40,67,.12);font-size:11.5px;line-height:1.3}
+.mrb-identity-shortcuts a{border-bottom:0;padding:0;white-space:nowrap}
+.mrb-identity-shortcuts a:hover,.mrb-identity-shortcuts a:focus-visible{text-decoration:underline;text-underline-offset:2px}
+.mrb-identity-shortcuts a:not(:last-child)::after{content:"·";display:inline-block;margin-left:6px;color:var(--muted);font-weight:500;text-decoration:none}
 .contact-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,240px);gap:28px;align-items:start}
 .contact-copy{min-width:0}
 .contact-side{display:grid;gap:12px;min-width:0}
@@ -3338,9 +3370,28 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 <img alt="" class="company-symbol company-symbol--sidebar" src="resources/branding/unstuck-symbol.png"/>
 <img alt="Unstuck Engineering" class="brand-wordmark brand-wordmark--sidebar" src="resources/branding/unstuck-engineering-wordmark-navy.png"/>
 </div>
+<p class="sidebar-personal-intro">Innovative, down-to-earth engineering by</p>
 <div class="personal-name-lockup">
 <p class="name">Matthew R Brice</p>
+<details class="mrb-identity-popover">
+<summary aria-label="MRB Electronics contact details" title="MRB Electronics / LinkedIn">
 <img alt="MRB monogram" class="mrb-insignia mrb-insignia--name" src="resources/branding/mrb-contact-animation-poster.png"/>
+</summary>
+<div class="mrb-identity-card" popover="manual">
+<p>Previously operated in the UK as <strong>MRB Electronics Ltd.</strong> Now Rotterdam based. <a class="mrb-identity-email" href="mailto:mrb@unstuckengineering.com">mrb@unstuckengineering.com</a></p>
+<div aria-label="MRB contact links" class="mrb-identity-links">
+<a aria-label="Matthew Brice on LinkedIn" class="mrb-linkedin-mark" href="https://www.linkedin.com/in/matthewbrice/" rel="noopener noreferrer" target="_blank" title="LinkedIn">LinkedIn ↗</a>
+</div>
+<nav aria-label="Page shortcuts" class="mrb-identity-shortcuts">
+<a href="#intro">Overview</a>
+<a href="#engagements">Offer</a>
+<a href="#cases">Cases</a>
+<a href="#proof">Evidence</a>
+<a href="#chronology">History</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</details>
 </div>
 <p class="kicker">Senior independent engineering support</p>
 <h1>RF, electronics &amp; embedded development and integration</h1>
@@ -3397,7 +3448,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   Ways to work together
  </h2>
  <p class="workflow-lead">
-  The priority is a useful engineering outcome. Work can begin as hands-on team support, a defined engineering project, or a smaller diagnostic entry point and expand where useful.
+  The priority is a useful engineering outcome. Work can begin as hands-on team support, a defined engineering project, or a smaller diagnostic <a href="#where">entry point</a> and expand where useful.
  </p>
  <div class="engagement-grid">
   <article class="engagement-card" id="offer-development-integration">
@@ -3459,15 +3510,15 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   Scope is agreed from the actual engineering need. It may be remote, on-site, hybrid, review-led, implementation-heavy, milestone-based, or time-boxed depending on hardware access and team context.
  </p>
 </section>
-<section class="section stack" id="cases">
+<section class="section stack" id="cases" data-evidence-browse-context="Development evidence" data-evidence-forward-href="#where" data-evidence-forward-label="Workflows" data-evidence-forward-secondary-href="#proof" data-evidence-forward-secondary-label="Detailed evidence">
  <h2>
   Development evidence
  </h2>
  <p class="workflow-lead">
-  Three examples showing development ownership across electronics, embedded control, RF integration, and validation infrastructure. Detailed evidence remains available further down the page.
+  Three examples showing development ownership across electronics, embedded control, RF integration, and validation infrastructure. <a href="#proof">Detailed evidence</a> remains available further down the page.
  </p>
  <div class="engagement-grid">
-  <article class="engagement-card project-case-card">
+  <article class="engagement-card project-case-card" data-evidence-return-source>
    <div class="engagement-kicker">Hardware + firmware + operator tooling</div>
    <h3>Battery test and control platform</h3>
    <p>
@@ -3477,10 +3528,10 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
     <dt>Engineering value</dt>
     <dd>Cross-domain development from bench need through working hardware, firmware, control, and operator-facing tooling.</dd>
     <dt>Evidence</dt>
-    <dd><a class="proof-evidence-link" href="#ev-isis-battery-platform">View the supporting chronology entry</a>.</dd>
+    <dd><a class="proof-evidence-link" data-evidence-choice-label="Battery test and control platform" href="#ev-isis-battery-platform">View the supporting chronology entry</a>.</dd>
    </dl>
   </article>
-  <article class="engagement-card project-case-card">
+  <article class="engagement-card project-case-card" data-evidence-return-source>
    <div class="engagement-kicker">RF + firmware + board bring-up</div>
    <h3>UHF transmitter development</h3>
    <p>
@@ -3490,10 +3541,10 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
     <dt>Engineering value</dt>
     <dd>Linked RF behaviour, board-level changes, and register-level control into one measurable bring-up path.</dd>
     <dt>Evidence</dt>
-    <dd><a class="proof-evidence-link" href="#ev-isis-trxvu-rf-bringup">View the supporting chronology entry</a>.</dd>
+    <dd><a class="proof-evidence-link" data-evidence-choice-label="UHF transmitter development" href="#ev-isis-trxvu-rf-bringup">View the supporting chronology entry</a>.</dd>
    </dl>
   </article>
-  <article class="engagement-card project-case-card">
+  <article class="engagement-card project-case-card" data-evidence-return-source>
    <div class="engagement-kicker">Automation + validation + handover</div>
    <h3>RF test infrastructure</h3>
    <p>
@@ -3503,7 +3554,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
     <dt>Engineering value</dt>
     <dd>Converted manual or fragile validation into repeatable evidence that could support development, production, and handover.</dd>
     <dt>Evidence</dt>
-    <dd><a class="proof-evidence-link" href="#ev-etherstack-ate-framework">View secure-radio evidence</a> and <a class="proof-evidence-link" href="#ev-isis-validation-uplift">satellite-radio evidence</a>.</dd>
+    <dd><a class="proof-evidence-link" data-evidence-choice-label="RF test infrastructure — secure-radio evidence" href="#ev-etherstack-ate-framework">View secure-radio evidence</a> and <a class="proof-evidence-link" data-evidence-choice-label="RF test infrastructure — satellite-radio evidence" href="#ev-isis-validation-uplift">satellite-radio evidence</a>.</dd>
    </dl>
   </article>
  </div>
@@ -4228,7 +4279,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   Detailed engineering evidence
  </h2>
  <p class="workflow-lead">
-  Technical evidence behind the development cases and offer, linked to supporting work history.
+  Technical evidence behind the development cases and offer, linked to supporting work <a href="#chronology">history</a>.
  </p>
  <div class="wf-shell wf-shell-split" data-tabs="">
   <div class="wf-toolbar">
@@ -4955,13 +5006,13 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   <span class="bench-pic-windowtitle">bench_pictures / capability_evidence</span>
  </div>
  <div aria-label="Bench image set" class="bench-pic-tabs" role="tablist">
-    <button aria-controls="bench-pic-panel-1" aria-selected="true" class="bench-pic-tab active" id="bench-pic-tab-1" role="tab" type="button">Multi-channel validation setup</button>
+    <button aria-controls="bench-pic-panel-1" aria-selected="false" class="bench-pic-tab" id="bench-pic-tab-1" role="tab" type="button">Multi-channel validation setup</button>
     <button aria-controls="bench-pic-panel-2" aria-selected="false" class="bench-pic-tab" id="bench-pic-tab-2" role="tab" type="button">Pear 01 pcb on bench</button>
     <button aria-controls="bench-pic-panel-3" aria-selected="false" class="bench-pic-tab" id="bench-pic-tab-3" role="tab" type="button">Prototyping bench</button>
-    <button aria-controls="bench-pic-panel-4" aria-selected="false" class="bench-pic-tab" id="bench-pic-tab-4" role="tab" type="button">Prototyping bench</button>
+    <button aria-controls="bench-pic-panel-4" aria-selected="true" class="bench-pic-tab active" id="bench-pic-tab-4" role="tab" type="button">Prototyping bench</button>
  </div>
  <div class="bench-pic-stage">
-   <figure aria-labelledby="bench-pic-tab-1" class="bench-pic-panel active" id="bench-pic-panel-1" role="tabpanel">
+   <figure aria-labelledby="bench-pic-tab-1" class="bench-pic-panel" id="bench-pic-panel-1" role="tabpanel" hidden>
     <img alt="Repeated DUT channels, controlled bench supplies, and live logging during development-stage test work." loading="lazy" src="resources/bench_pics/01_multichannel_validation_setup.png"/>
     <figcaption>
      <span>Multi-channel validation setup</span>
@@ -4982,7 +5033,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
      Prototyping bench
     </figcaption>
    </figure>
-   <figure aria-labelledby="bench-pic-tab-4" class="bench-pic-panel" id="bench-pic-panel-4" role="tabpanel" hidden>
+   <figure aria-labelledby="bench-pic-tab-4" class="bench-pic-panel active" id="bench-pic-panel-4" role="tabpanel">
     <img alt="Prototyping bench" loading="lazy" src="resources/bench_pics/04_prototyping_bench.jpg"/>
     <figcaption>
      <span>Prototyping bench</span>
@@ -5083,7 +5134,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
  </h2>
  <div class="callout" style="margin-bottom:18px;">
   <p>
-   The chronology shows the industrial foundation behind the offer and the continuing project evidence: RF validation widening into development, embedded tooling, power and board work, system integration, automation, and hands-on hardware-facing engineering.
+   The chronology shows the industrial foundation behind the offer and the continuing project evidence: RF validation widening into development, embedded tooling, power and board work, system integration, automation, and hands-on hardware-facing engineering. <a href="#contact">Discuss options</a>
   </p>
  </div>
  <div class="timeline-shell">
@@ -7026,7 +7077,10 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 
   const cloneChoiceHtml = (link) => {
     const href = link.getAttribute('href') || '';
-    return `<li><a href="${href.replace(/"/g, '&quot;')}">${link.innerHTML}</a></li>`;
+    const clone = link.cloneNode(true);
+    const customLabel = link.getAttribute('data-evidence-choice-label') || '';
+    if (customLabel.trim()) clone.textContent = customLabel.trim();
+    return `<li><a href="${href.replace(/"/g, '&quot;')}">${clone.innerHTML}</a></li>`;
   };
 
   const choicesFromTerm = (term) => {
@@ -7091,6 +7145,34 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
     };
   };
 
+  const browseContextGroupPayload = (link) => {
+    if (!link || !link.matches('a.proof-evidence-link[href^="#"]')) return null;
+    const group = link.closest('[data-evidence-browse-context]');
+    if (!group) return null;
+    const anchors = Array.from(group.querySelectorAll('a.proof-evidence-link[href^="#"]'));
+    if (!anchors.length) return null;
+    const customContext = group.getAttribute('data-evidence-browse-context') || '';
+    const heading = group.querySelector(':scope > h2, :scope > h3');
+    const context = customContext.trim() || (heading ? heading.textContent.trim() : 'Related evidence');
+    const source = link.closest('[data-evidence-return-source]') || link;
+    const forwardHref = group.getAttribute('data-evidence-forward-href') || '';
+    const forwardLabel = group.getAttribute('data-evidence-forward-label') || '';
+    const forwardSecondaryHref = group.getAttribute('data-evidence-forward-secondary-href') || '';
+    const forwardSecondaryLabel = group.getAttribute('data-evidence-forward-secondary-label') || '';
+    return {
+      choices: anchors.map((anchor) => ({
+        href: anchor.getAttribute('href') || '',
+        html: cloneChoiceHtml(anchor)
+      })).filter((item) => item.href),
+      context,
+      sourceId: ensureEvidenceSourceId(source),
+      forwardHref: forwardHref.trim(),
+      forwardLabel: forwardLabel.trim(),
+      forwardSecondaryHref: forwardSecondaryHref.trim(),
+      forwardSecondaryLabel: forwardSecondaryLabel.trim()
+    };
+  };
+
   const escapeEvidenceText = (value) => String(value || '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -7112,7 +7194,15 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
     if (!choices.length) return null;
     const includeReturn = Boolean(options.includeReturn && payload && payload.sourceId);
     const returnControl = includeReturn ? `<button type="button" class="evidence-choice-return" data-v2t-return-source="${escapeEvidenceText(payload.sourceId)}" aria-label="Return to source" title="Return to source">↰</button>` : '';
-    const context = payload && payload.context ? `<span class="evidence-choice-context">Evidence for<b>“${escapeEvidenceText(payload.context)}”${returnControl}</b></span>` : '';
+    const forwardHref = payload && payload.forwardHref ? payload.forwardHref : '';
+    const forwardLabel = payload && payload.forwardLabel ? payload.forwardLabel : 'Detailed evidence';
+    const forwardControl = forwardHref ? `<a class="evidence-choice-forward" href="${escapeEvidenceText(forwardHref)}" aria-label="Jump to ${escapeEvidenceText(forwardLabel)}" title="Jump to ${escapeEvidenceText(forwardLabel)}">→ ${escapeEvidenceText(forwardLabel)}</a>` : '';
+    const forwardSecondaryHref = payload && payload.forwardSecondaryHref ? payload.forwardSecondaryHref : '';
+    const forwardSecondaryLabel = payload && payload.forwardSecondaryLabel ? payload.forwardSecondaryLabel : 'Workflows';
+    const forwardSecondaryControl = forwardSecondaryHref ? `<span class="evidence-choice-context-next-row"><a class="evidence-choice-forward" href="${escapeEvidenceText(forwardSecondaryHref)}" aria-label="Jump to ${escapeEvidenceText(forwardSecondaryLabel)}" title="Jump to ${escapeEvidenceText(forwardSecondaryLabel)}">→ ${escapeEvidenceText(forwardSecondaryLabel)}</a></span>` : '';
+    const contextDetail = payload && payload.context ? `“${escapeEvidenceText(payload.context)}”` : '';
+    const contextTitle = payload && payload.context ? escapeEvidenceText(payload.context) : '';
+    const context = contextDetail ? `<span class="evidence-choice-context">Evidence for<span class="evidence-choice-context-row"><b title="${contextTitle}">${contextDetail}</b>${returnControl}${forwardControl}</span>${forwardSecondaryControl}</span>` : '';
     panel.innerHTML = `${context}<ul>${choices.map((choice) => choice.html).join('')}</ul>`;
     return panel;
   };
@@ -7262,6 +7352,21 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
       return;
     }
 
+    const forwardControl = event.target.closest(`#${PANEL_ID} .evidence-choice-forward[href^="#"]`);
+    if (forwardControl) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      const href = forwardControl.getAttribute('href') || '';
+      const targetId = href.charAt(0) === '#' ? href.slice(1) : '';
+      const target = targetId ? document.getElementById(targetId) : null;
+      closePanel();
+      removeContextNub();
+      if (href && window.location.hash !== href) history.pushState(null, '', href);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
     const overlayLink = event.target.closest(`#${PANEL_ID} a[href^="#"]`);
     if (overlayLink) {
       const href = overlayLink.getAttribute('href') || '';
@@ -7298,10 +7403,10 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 
     const directEvidenceLink = event.target.closest('a.proof-evidence-link[href^="#"]');
     if (directEvidenceLink && !event.target.closest(`#${PANEL_ID}`)) {
-      const groupPayload = representativeProofGroupPayload(directEvidenceLink);
+      const groupPayload = representativeProofGroupPayload(directEvidenceLink) || browseContextGroupPayload(directEvidenceLink);
       removeContextNub();
       closePanel();
-      if (groupPayload && groupPayload.choices && groupPayload.choices.length > 1) {
+      if (groupPayload && groupPayload.choices && groupPayload.choices.length) {
         const href = directEvidenceLink.getAttribute('href') || '';
         activePayload = groupPayload;
         protectEvidenceInteraction(5200);
@@ -7425,6 +7530,99 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   window.addEventListener('hashchange', requestUpdate);
   document.addEventListener('DOMContentLoaded', updateActiveSection);
   updateActiveSection();
+})();
+</script>
+
+<script>
+(function(){
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  const supportsPopover = typeof HTMLElement !== 'undefined' && 'showPopover' in HTMLElement.prototype;
+  const popovers = Array.from(document.querySelectorAll('.mrb-identity-popover')).map((details) => ({
+    details,
+    trigger: details.querySelector(':scope > summary'),
+    card: details.querySelector('.mrb-identity-card')
+  })).filter((item) => item.trigger && item.card);
+  if (!popovers.length) return;
+
+  if (!supportsPopover) popovers.forEach(({ card }) => card.removeAttribute('popover'));
+
+  const cardIsOpen = (card) => supportsPopover ? card.matches(':popover-open') : true;
+
+  const showCard = (item) => {
+    if (!supportsPopover || cardIsOpen(item.card)) return;
+    try { item.card.showPopover(); } catch (_) {}
+  };
+
+  const hideCard = (item) => {
+    if (!supportsPopover || !cardIsOpen(item.card)) return;
+    try { item.card.hidePopover(); } catch (_) {}
+  };
+
+  const place = (item) => {
+    if (!item || !item.details.open) return;
+    const { trigger, card } = item;
+    if (supportsPopover && !cardIsOpen(card)) return;
+
+    const margin = 12;
+    const gap = 9;
+    const triggerRect = trigger.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const width = Math.min(cardRect.width || 286, window.innerWidth - margin * 2);
+    const height = cardRect.height || 96;
+    const triggerCenter = triggerRect.left + triggerRect.width / 2;
+
+    let left = triggerCenter - 22;
+    left = clamp(left, margin, Math.max(margin, window.innerWidth - width - margin));
+
+    let top = triggerRect.bottom + gap;
+    let above = false;
+    if (top + height > window.innerHeight - margin && triggerRect.top - height - gap >= margin) {
+      top = triggerRect.top - height - gap;
+      above = true;
+    } else {
+      top = clamp(top, margin, Math.max(margin, window.innerHeight - height - margin));
+    }
+
+    const arrowX = clamp(triggerCenter - left, 16, Math.max(16, width - 16));
+    card.style.left = `${Math.round(left)}px`;
+    card.style.top = `${Math.round(top)}px`;
+    card.style.setProperty('--mrb-arrow-x', `${Math.round(arrowX)}px`);
+    card.classList.toggle('is-above', above);
+  };
+
+  const placeOpen = () => popovers.forEach((item) => place(item));
+
+  popovers.forEach((item) => {
+    item.details.addEventListener('toggle', () => {
+      if (!item.details.open) {
+        hideCard(item);
+        return;
+      }
+      popovers.forEach((other) => {
+        if (other !== item && other.details.open) other.details.open = false;
+      });
+      showCard(item);
+      window.requestAnimationFrame(() => place(item));
+    });
+  });
+
+  document.addEventListener('pointerdown', (event) => {
+    popovers.forEach((item) => {
+      if (item.details.open && !item.details.contains(event.target)) item.details.open = false;
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    popovers.forEach((item) => {
+      if (!item.details.open) return;
+      item.details.open = false;
+      item.trigger.focus();
+    });
+  });
+
+  window.addEventListener('resize', placeOpen);
+  window.addEventListener('scroll', placeOpen, { passive:true });
 })();
 </script>
 </body>
