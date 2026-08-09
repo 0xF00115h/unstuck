@@ -7604,6 +7604,12 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
       showCard(item);
       window.requestAnimationFrame(() => place(item));
     });
+
+    item.card.querySelectorAll('.mrb-identity-shortcuts a').forEach((link) => {
+      link.addEventListener('click', () => {
+        item.details.open = false;
+      });
+    });
   });
 
   document.addEventListener('pointerdown', (event) => {
