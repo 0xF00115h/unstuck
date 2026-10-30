@@ -3349,6 +3349,13 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 .mrb-identity-card .mrb-popout-contact{margin:4px 0}
 .mrb-identity-card .mrb-popout-revision{margin:10px 0 0;padding-top:7px;border-top:1px solid rgba(128,128,128,.23);font-size:.72em;letter-spacing:.015em;opacity:.65}
 </style>
+<style id="v5-topbar-navigation-fit">
+/* Keep seven desktop navigation links on one row; retain the existing mobile menu. */
+@media (min-width:981px){
+  .topbar-nav{flex-wrap:nowrap;gap:clamp(6px,0.85vw,12px);min-width:0}
+  .topbar-nav a{white-space:nowrap;letter-spacing:.055em}
+}
+</style>
 </head>
 <body>
 <div class="page">
@@ -3367,7 +3374,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 <a href="#cases">Cases</a>
 <a href="#proof">Evidence</a>
 <a href="#chronology">History</a>
-<a href="#cv-request">Request a CV</a>
+<a href="cv-request.html">Request a CV</a>
 <a href="#contact">Contact</a>
 </nav>
 </header>
@@ -3408,7 +3415,7 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 <a href="#cases">Cases</a>
 <a href="#proof">Evidence</a>
 <a href="#chronology">History</a>
-<a href="#cv-request">Request a CV</a>
+<a href="cv-request.html">Request a CV</a>
 <a href="#contact">Contact</a>
 </nav>
 </div>
@@ -5671,78 +5678,6 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   </div>
  </div>
 </section>
-<!-- V5 hard-coded feature: no Markdown fields or comment-manifest registration. -->
-<section class="section" id="cv-request" data-nav-align-target aria-labelledby="cv-request-heading">
- <h2 id="cv-request-heading">Request a CV</h2>
- <div class="cv-panel">
-  <h3>Explore engineering capabilities</h3>
-  <p class="cv-intro">Interested in a particular area of my work? Select a technical profile and I'll send more details. No obligation or project specification needed.</p>
-  <form id="cv-request-form" novalidate>
-   <fieldset class="cv-set">
-    <legend>I'm interested in...</legend>
-    <label class="cv-choice"><input type="checkbox" name="areas" value="RF / microwave" checked>RF / microwave</label>
-    <label class="cv-choice"><input type="checkbox" name="areas" value="Analogue / power electronics">Analogue / power electronics</label>
-    <label class="cv-choice"><input type="checkbox" name="areas" value="Embedded hardware / firmware">Embedded hardware / firmware</label>
-    <label class="cv-choice"><input type="checkbox" name="areas" value="Python / test automation">Python / test automation</label>
-    <label class="cv-choice"><input type="checkbox" name="areas" value="Measurement / validation">Measurement / validation</label>
-    <label class="cv-choice"><input type="checkbox" name="areas" value="Multidisciplinary / other">Multidisciplinary / other</label>
-   </fieldset>
-   <fieldset class="cv-set">
-    <legend>Reason for interest (optional)</legend>
-    <label class="cv-choice"><input type="radio" name="reason" value="Just exploring possibilities">Just exploring possibilities</label>
-    <label class="cv-choice"><input type="radio" name="reason" value="Potential engineering project">Potential engineering project</label>
-    <label class="cv-choice"><input type="radio" name="reason" value="Possible position or collaboration">Possible position or collaboration</label>
-   </fieldset>
-   <label class="cv-field-label" for="cv-email">Work email</label>
-   <input class="cv-field" id="cv-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="254">
-   <label class="cv-field-label" for="cv-company">Organisation (optional)</label>
-   <input class="cv-field" id="cv-company" name="organisation" type="text" autocomplete="organization" placeholder="Company name" maxlength="160">
-   <label class="cv-field-label" for="cv-message">Message (optional)</label>
-   <textarea class="cv-field" id="cv-message" name="message" rows="3" maxlength="2000" placeholder="Anything useful to know"></textarea>
-   <p class="cv-footnote">Your contact details would be used only to respond to this request. No CV is delivered automatically.</p>
-   <button class="cv-submit" type="submit" disabled aria-describedby="cv-request-status">Request a focused CV</button>
-   <p class="cv-status" id="cv-request-status" role="status">Email requests are not yet enabled. For now, please use the Contact section below.</p>
-  </form>
- </div>
-</section>
-
-<style id="cv-request-style">
-#cv-request .cv-panel{background:#090909;color:#e8e8e8;border:1px solid #303030;border-radius:13px;padding:clamp(16px,3vw,28px);font:15px/1.5 Arial,Helvetica,sans-serif}
-#cv-request .cv-panel *{box-sizing:border-box}
-#cv-request .cv-panel h3{color:#f5f5f5;margin:0 0 5px;font-size:18px;line-height:1.35;font-weight:700}
-#cv-request .cv-intro{margin:0 0 16px;color:#aaa;max-width:680px}
-#cv-request .cv-set{padding:0;margin:0 0 18px;border:0;min-width:0}
-#cv-request .cv-set legend{color:#999;font-size:14px;padding:0;margin-bottom:7px}
-#cv-request .cv-choice{display:flex;align-items:center;gap:10px;min-height:34px;cursor:pointer;color:#e7e7e7}
-#cv-request .cv-choice input{appearance:none;-webkit-appearance:none;margin:0;flex:0 0 20px;width:20px;height:20px;border:1px solid #505050;border-radius:50%;background:#090909;position:relative;cursor:pointer}
-#cv-request .cv-choice input:checked{background:#e8e8e8;border-color:#e8e8e8}
-#cv-request .cv-choice input[type=checkbox]:checked:after{content:"";position:absolute;left:5px;top:3px;width:6px;height:9px;border-right:2px solid #151515;border-bottom:2px solid #151515;transform:rotate(45deg)}
-#cv-request .cv-choice input[type=radio]:checked:after{content:"";position:absolute;left:7px;top:7px;width:4px;height:4px;border-radius:50%;background:#151515}
-#cv-request .cv-choice input:focus-visible,#cv-request .cv-field:focus-visible{outline:2px solid #a4c8ed;outline-offset:3px}
-#cv-request .cv-field-label{display:block;color:#999;margin:11px 0 5px;font-size:14px}
-#cv-request .cv-field{display:block;width:100%;min-height:42px;padding:10px 16px;border:1px solid #454545;border-radius:22px;background:#090909;color:#fff;font:inherit}
-#cv-request .cv-field::placeholder{color:#858585;opacity:1}
-#cv-request textarea.cv-field{border-radius:14px;min-height:78px;resize:vertical}
-#cv-request .cv-footnote{font-size:13px;color:#a5a5a5;margin:15px 0 10px}
-#cv-request .cv-submit{background:#282828;color:#a9a9a9;border:1px solid #505050;border-radius:22px;padding:10px 18px;font:inherit;cursor:not-allowed;opacity:1}
-#cv-request .cv-status{color:#b5b5b5;font-size:13px;margin:8px 0 0}
-@media(max-width:600px){#cv-request .cv-panel{padding:16px}#cv-request .cv-field{font-size:16px}}
-</style>
-<script id="cv-request-delivery-stub">
-/* Delivery integration intentionally absent. Do not enable the button until
-   a server-side submission endpoint provides validation, abuse protection,
-   privacy handling, delivery failure reporting, and a verified success reply.
-   Never put email-service credentials in public browser JavaScript. */
-(function(){
-  const form = document.getElementById('cv-request-form');
-  if (!form) return;
-  form.addEventListener('submit', function(event){
-    event.preventDefault();
-    document.getElementById('cv-request-status').textContent =
-      'Email requests are not yet enabled. Please use the Contact section.';
-  });
-})();
-</script>
 <section class="section cta" id="contact" data-nav-align-target>
  <div class="contact-layout">
   <div class="contact-copy">

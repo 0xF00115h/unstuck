@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Request a CV — Unstuck Engineering</title><meta name="description" content="Request a focused engineering CV for RF, embedded electronics, test automation and validation."><link rel="icon" href="resources/branding/unstuck-symbol.png"><style>
+:root{color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font:15px/1.45 Arial,Helvetica,sans-serif;background:#0a0b0e;color:#e9eaec}
+header{height:64px;background:#202a36;border-bottom:1px solid #455060;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,38px);gap:22px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#f1f3f5;font-weight:bold;letter-spacing:.09em;font-size:13px;white-space:nowrap}.brand img{height:31px;width:auto;max-width:210px;object-fit:contain}
+nav{display:flex;gap:clamp(7px,1vw,16px);align-items:center;flex-wrap:wrap}nav a{font-size:12px;color:#b8c6d6;text-decoration:none;white-space:nowrap}nav a[aria-current=page]{color:#fff;border-bottom:1px solid #fff}nav a:hover{color:#fff}
+main{height:calc(100dvh - 64px);min-height:0;display:grid;grid-template-columns:minmax(380px,1.06fr) minmax(280px,.94fr)}
+.request{min-height:0;overflow:auto;padding:clamp(20px,3vw,34px) clamp(20px,4vw,58px)}
+.request h1{font-size:22px;margin:0 0 7px}.intro{color:#aaa;margin:0 0 18px;max-width:680px}
+fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;color:#999;font-size:14px;margin-bottom:7px}
+.choice{display:flex;align-items:center;gap:11px;min-height:32px;cursor:pointer}.choice input{appearance:none;width:19px;height:19px;border:1px solid #53565b;border-radius:50%;margin:0;flex:0 0 19px;background:transparent;position:relative}
+.choice input:checked{background:#ececec;border-color:#ececec}.choice input[type=checkbox]:checked:after{content:'';position:absolute;left:5px;top:3px;width:5px;height:9px;border-right:2px solid #151515;border-bottom:2px solid #151515;transform:rotate(45deg)}.choice input[type=radio]:checked:after{content:'';position:absolute;inset:7px;border-radius:50%;background:#111}
+.choice input:focus-visible,.field:focus-visible{outline:2px solid #abccea;outline-offset:2px}
+.fieldlabel{margin-top:9px;margin-bottom:5px}.field{display:block;width:100%;background:#0a0b0e;color:#eee;border:1px solid #404349;border-radius:22px;padding:10px 16px;font:inherit;min-height:40px}.field::placeholder{color:#82858a}textarea.field{border-radius:15px;resize:vertical;min-height:64px}
+.privacy,.status{font-size:12px;color:#a6a8ac}.submit{border:1px solid #575b61;background:#202329;color:#b4b8bd;border-radius:22px;padding:11px 19px;font:inherit;cursor:not-allowed}
+.preview{min-width:0;background:linear-gradient(150deg,#1b2029,#11151b);border-left:1px solid #383d46;display:flex;flex-direction:column;padding:clamp(20px,3vw,36px);overflow:hidden}
+.preview h2{font-size:17px;margin:0 0 5px}.preview p{font-size:13px;color:#a9b1be;margin:0}.documents{position:relative;flex:1;min-height:280px;margin-top:24px}
+.document{position:absolute;width:min(43%,225px);aspect-ratio:320/450;object-fit:cover;background:white;box-shadow:0 15px 35px #0009;border:1px solid #7c8795;top:9%;left:29%;transform:rotate(0deg);filter:saturate(.7)}
+.document:nth-child(1){left:5%;top:15%;transform:rotate(-9deg)}.document:nth-child(2){left:31%;top:6%;transform:rotate(3deg)}.document:nth-child(3){left:56%;top:16%;transform:rotate(10deg)}.preview small{color:#8993a2;font-size:12px}
+@media(max-width:980px){header{height:auto;min-height:64px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}main{height:auto;min-height:calc(100dvh - 80px);grid-template-columns:1fr}.request{overflow:visible}.preview{min-height:320px}.documents{height:245px;flex:none}.document{max-width:140px}}
+@media(max-width:560px){header nav{gap:9px}nav a{font-size:11px}.request{padding:19px 16px}.field{font-size:16px}.preview{padding:20px;min-height:280px}.documents{height:205px}.document{max-width:120px}}
+</style><style id="cv-preview-gallery">
+.preview{min-height:0}
+.documents{position:relative;min-height:240px}
+.document{border:0;cursor:pointer;border-radius:1px;transition:transform .3s ease,filter .3s ease,box-shadow .3s ease;filter:blur(1.6px) saturate(.6) brightness(.92)}
+.document:hover,.document:focus-visible{filter:blur(0);outline:2px solid #9ebbd8;outline-offset:4px}
+.document.is-selected{z-index:5;filter:blur(0) saturate(1);box-shadow:0 15px 40px #000b,0 0 0 2px #d1dce8}
+.cv-gallery-full{display:none;min-height:0;flex:1;align-items:center;justify-content:center;padding:10px 0;overflow:auto}
+.cv-gallery-full img{display:block;max-width:100%;max-height:100%;height:auto;width:auto;object-fit:contain;box-shadow:0 8px 24px #0009;background:#fff}
+.preview.cv-full-mode .documents{display:none}
+.preview.cv-full-mode .cv-gallery-full{display:flex}
+.cv-gallery-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px;flex-shrink:0}
+.cv-gallery-controls button{border:1px solid #596272;background:#202733;color:#e4e8ed;border-radius:5px;min-height:36px;min-width:42px;cursor:pointer;font-size:20px}
+.cv-gallery-controls button:disabled{opacity:.3;cursor:default}
+.cv-gallery-controls button:focus-visible{outline:2px solid #b5cae5}
+.cv-gallery-caption{font:12px Arial,Helvetica,sans-serif;color:#aebac9;min-width:190px;text-align:center}
+.preview.cv-full-mode .cv-gallery-full{max-height:calc(100% - 135px)}
+@media(max-width:980px){.preview.cv-full-mode .cv-gallery-full{height:75vh;max-height:75vh}.documents{min-height:240px}}
+@media(prefers-reduced-motion:reduce){.document{transition:none}}
+</style><style id="cv-paper-marker-layout">
+.documents{position:relative;flex:1;min-height:340px;margin-top:10px;padding-top:80px;overflow:visible}
+.documents>.document{transform-origin:50% 0%;top:36%}
+.documents>.document:nth-of-type(1){left:5%;top:36%;transform:rotate(-9deg)}
+.documents>.document:nth-of-type(2){left:31%;top:26%;transform:rotate(3deg)}
+.documents>.document:nth-of-type(3){left:56%;top:36%;transform:rotate(10deg)}
+.cv-stack-marker{position:absolute;z-index:20;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:82px;padding:0;border:0;background:transparent;cursor:pointer;text-align:center;text-shadow:0 2px 8px #000a}
+.cv-stack-marker-no{color:#d8e2ee;font:800 clamp(28px,3vw,42px)/1 "Trebuchet MS",Arial,sans-serif}
+.cv-stack-marker-name{color:#a2b2c5;font:700 clamp(12px,1.2vw,17px)/1.2 Arial,sans-serif;white-space:nowrap}
+.cv-stack-marker[aria-pressed="true"] .cv-stack-marker-no{color:#fff}
+.cv-stack-marker[aria-pressed="true"] .cv-stack-marker-name{color:#e0edfa}
+.cv-stack-marker:focus-visible{outline:2px solid #b5cae5;outline-offset:4px}
+.cv-stack-marker--1{left:7%;top:3%;transform:rotate(-9deg)}
+.cv-stack-marker--2{left:37%;top:0;transform:rotate(3deg)}
+.cv-stack-marker--3{left:68%;top:3%;transform:rotate(10deg)}
+@media(max-width:560px){.documents{min-height:290px;padding-top:70px}.cv-stack-marker{min-width:64px}.cv-stack-marker-no{font-size:27px}.cv-stack-marker-name{font-size:11px}}
+</style><style id="cv-stack-fan-controls">
+/* Paper positions and their labels are computed together by the radial fan controller. */
+.documents{touch-action:pan-y;cursor:grab;user-select:none}
+.documents.is-fan-dragging{cursor:grabbing;touch-action:none}
+.documents>.document{transition:filter .25s ease,box-shadow .25s ease;user-select:none;-webkit-user-drag:none}
+.documents>.cv-stack-marker{transition:color .2s ease;touch-action:none}
+</style><style id="cv-rigid-stack-layout">
+.cv-paper-rigid-group{position:absolute;inset:0;transform-origin:50% 54%;will-change:transform}
+.cv-paper-rigid-group>.document{position:absolute;transform-origin:50% 0%;top:36%}
+.cv-paper-rigid-group>.document:nth-of-type(1){left:5%;top:36%;transform:rotate(-9deg)}
+.cv-paper-rigid-group>.document:nth-of-type(2){left:31%;top:26%;transform:rotate(3deg)}
+.cv-paper-rigid-group>.document:nth-of-type(3){left:56%;top:36%;transform:rotate(10deg)}
+.cv-paper-rigid-group>.cv-stack-marker{position:absolute}
+</style><style id="cv-fan-choice">.cv-mode-switch{position:relative;z-index:30;display:flex;gap:18px;margin:12px 0 0;font-size:13px;color:#c8d2df;pointer-events:auto}.cv-mode-switch label{position:relative;z-index:31;cursor:pointer;pointer-events:auto}.cv-mode-switch input{accent-color:#adc6e0;cursor:pointer;pointer-events:auto}.preview.cv-full-mode .cv-mode-switch{display:none}.cv-paper-rigid-group.auto-focus .document,.cv-paper-rigid-group.auto-focus .cv-stack-marker{transition:left 1s ease,top 1s ease,transform 1s ease}.documents.is-fan-dragging .cv-paper-rigid-group.auto-focus .document,.documents.is-fan-dragging .cv-paper-rigid-group.auto-focus .cv-stack-marker{transition:none}</style><style id="cv-difference-view">.cv-diff-toggle{display:flex;align-items:center;gap:8px;position:relative;z-index:35;margin-top:16px;color:#e1d197;font-size:13px;cursor:pointer}.cv-diff-toggle input{cursor:pointer;accent-color:#e8ba30}.preview.cv-full-mode .cv-diff-toggle{display:flex}</style><style id="cv-uncluttered-full-view">
+/* Expanded CV uses the entire right panel; stack controls belong to stack mode. */
+.preview.cv-full-mode{padding:0;position:relative;overflow:hidden}
+.preview.cv-full-mode>h2,.preview.cv-full-mode>p,
+.preview.cv-full-mode>.cv-diff-toggle,.preview.cv-full-mode>.cv-mode-switch,
+.preview.cv-full-mode>.cv-gallery-controls,.preview.cv-full-mode>small{display:none}
+.preview.cv-full-mode .cv-gallery-full{display:flex;flex:1;min-height:0;height:100%;max-height:none;margin:0;padding:0;overflow:auto;align-items:safe center;justify-content:safe center}
+.preview.cv-full-mode .cv-gallery-full img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+/* Once zoomed, remove the fit-to-panel caps that otherwise enlarge only the image box. */
+.preview.cv-full-mode .cv-gallery-full.is-zoomed img{max-width:none;max-height:none;object-fit:fill}
+@media(max-width:980px){.preview.cv-full-mode{height:min(92dvh,1050px);min-height:420px}.preview.cv-full-mode .cv-gallery-full{height:100%;max-height:none}}
+</style><style id="cv-obscure-control">.cv-obscure-toggle{display:block;position:relative;z-index:35;margin:11px 0 0;padding:8px 14px;border:1px solid #5a626e;border-radius:20px;background:#1b222c;color:#cbd5e1;font:13px Arial,sans-serif;cursor:pointer;align-self:flex-start}.cv-obscure-toggle[aria-pressed="true"]{border-color:#e2be42;color:#f0dd9b}.cv-obscure-toggle:focus-visible{outline:2px solid #d6e6f7;outline-offset:2px}.preview.cv-full-mode .cv-obscure-toggle{display:none}</style><style id="cv-local-debug-style">
+.cv-debug-tools[hidden],#cv-debug-reveal[hidden]{display:none!important}
+#cv-debug-reveal{margin-top:12px;position:relative;z-index:45}
+.cv-debug-tools{position:relative;z-index:40;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:10px;padding:10px;border:1px solid #4e5969;border-radius:8px;background:#18202b}
+.cv-debug-tools .cv-diff-toggle,.cv-debug-tools .cv-obscure-toggle{margin:0}
+.cv-debug-tools textarea{width:100%;min-height:54px;background:#0c1117;color:#c3d0e0;border:1px solid #536072;font:11px/1.3 monospace;resize:vertical}
+.cv-debug-tools small{width:100%}
+.preview.cv-full-mode .cv-debug-tools,.preview.cv-full-mode #cv-debug-reveal{display:none!important}
+</style><style id="cv-active-marker-only">
+/* Marker is attached to the matching paper's top edge, not a separate fan slot. */
+.cv-stack-marker{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility 0s linear .28s,left 1s ease,top 1s ease,transform 1s ease}
+.cv-stack-marker[aria-pressed="true"]{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .32s ease,visibility 0s,left 1s ease,top 1s ease,transform 1s ease}
+@media(prefers-reduced-motion:reduce){.cv-stack-marker{transition:none}}
+</style><style id="cv-preview-wheel-zoom">
+/* Wheel zoom is restricted to the full-page CV preview; default fit is 1x. */
+.cv-gallery-full{overflow:auto;overscroll-behavior:contain;align-items:safe center;justify-content:safe center;scrollbar-width:thin}
+.cv-gallery-full img{flex-shrink:0;cursor:grab;user-select:none;-webkit-user-drag:none}
+.cv-gallery-full.is-dragging img{cursor:grabbing}
+.cv-gallery-full.is-zoomed img{max-width:none;max-height:none}
+</style></head>
+<body><header><a class="brand" href="index.html#intro"><img alt="Unstuck Engineering" src="resources/branding/unstuck-engineering-wordmark-light.png"></a><nav aria-label="Website navigation"><a href="index.html#intro">Overview</a><a href="index.html#engagements">Offer</a><a href="index.html#cases">Cases</a><a href="index.html#proof">Evidence</a><a href="index.html#chronology">History</a><a href="cv-request.html" aria-current="page">Request a CV</a><a href="index.html#contact">Contact</a></nav></header>
+<main><section class="request" aria-labelledby="cv-heading"><h1 id="cv-heading">Explore engineering capabilities</h1><p class="intro">Interested in a particular area of my work? Select a technical profile and I'll send more details. No obligation or project specification needed.</p>
+<form id="cv-request-form"><fieldset><legend>I'm interested in...</legend>
+<label class="choice"><input type="checkbox" name="areas" value="RF / microwave" checked>RF / microwave</label>
+<label class="choice"><input type="checkbox" name="areas" value="Analogue / power electronics">Analogue / power electronics</label>
+<label class="choice"><input type="checkbox" name="areas" value="Embedded hardware / firmware">Embedded hardware / firmware</label>
+<label class="choice"><input type="checkbox" name="areas" value="Python / test automation">Python / test automation</label>
+<label class="choice"><input type="checkbox" name="areas" value="Measurement / validation">Measurement / validation</label>
+<label class="choice"><input type="checkbox" name="areas" value="Multidisciplinary / other">Multidisciplinary / other</label></fieldset>
+<fieldset><legend>Reason for interest (optional)</legend>
+<label class="choice"><input type="radio" name="reason" value="Just exploring possibilities">Just exploring possibilities</label>
+<label class="choice"><input type="radio" name="reason" value="Potential engineering project">Potential engineering project</label>
+<label class="choice"><input type="radio" name="reason" value="Possible position or collaboration">Possible position or collaboration</label></fieldset>
+<label for="cv-email" class="fieldlabel">Work email</label><input class="field" id="cv-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="254">
+<label for="cv-organisation" class="fieldlabel">Organisation (optional)</label><input class="field" id="cv-organisation" name="organisation" autocomplete="organization" placeholder="Company name" maxlength="160">
+<label for="cv-message" class="fieldlabel">Message (optional)</label><textarea class="field" id="cv-message" name="message" placeholder="Anything useful to know" maxlength="2000" rows="2"></textarea>
+<p class="privacy">Contact details will only be used to respond to your request. No CV files are delivered automatically.</p><button type="submit" class="submit" disabled>Request a focused CV</button><p class="status" role="status">Requests are not yet enabled. Please use <a style="color:#cddbea" href="index.html#contact">Contact</a> for now.</p></form></section>
+<aside class="preview" aria-label="Illustrative CV previews"><h2>Focused engineering profiles</h2><p>Different views of the same engineering experience, matched to your areas of interest.</p><button id="cv-debug-reveal" type="button" class="cv-obscure-toggle" hidden aria-expanded="false" aria-controls="cv-debug-tools">Show debug controls</button><div id="cv-debug-tools" class="cv-debug-tools" hidden><label class="cv-diff-toggle"><input id="cv-show-diffs" type="checkbox"> Show CV focus (yellow outlines)</label><button class="cv-obscure-toggle" id="cv-obscure" type="button" aria-pressed="false">Obscure main body</button><button type="button" id="cv-export-config" class="cv-obscure-toggle">Export config</button><textarea id="cv-config-output" readonly rows="3" aria-label="Exported viewer configuration" placeholder="Exported JSON appears here"></textarea><button type="button" id="cv-save-default" class="cv-obscure-toggle">Save as local default</button><small id="cv-config-status"></small></div><div class="documents" id="cv-gallery-stack" aria-label="Select a CV to view its two pages"><div class="cv-paper-rigid-group" id="cv-paper-rigid-group">
+<button class="cv-stack-marker cv-stack-marker--1" type="button" data-cv-label="embedded" aria-pressed="false"><span class="cv-stack-marker-no">1</span><span class="cv-stack-marker-name">Embedded</span></button>
+<button class="cv-stack-marker cv-stack-marker--2" type="button" data-cv-label="rf" aria-pressed="true"><span class="cv-stack-marker-no">2</span><span class="cv-stack-marker-name">RF Dev</span></button>
+<button class="cv-stack-marker cv-stack-marker--3" type="button" data-cv-label="python" aria-pressed="false"><span class="cv-stack-marker-no">3</span><span class="cv-stack-marker-name">Python Test</span></button>
+<img class="document is-selected" data-cv="rf" tabindex="0" role="button" aria-label="Select RF engineering CV" alt="First page of RF engineering CV" src="resources/cv_previews/rf-p1.webp">
+<img class="document" data-cv="embedded" tabindex="0" role="button" aria-label="Select embedded engineering CV" alt="First page of embedded engineering CV" src="resources/cv_previews/embedded-p1.webp">
+<img class="document" data-cv="python" tabindex="0" role="button" aria-label="Select Python automation CV" alt="First page of Python test automation CV" src="resources/cv_previews/python-p1.webp"></div></div>
+<div class="cv-gallery-full" id="cv-gallery-full" aria-live="polite"><img id="cv-gallery-page" alt="Selected CV page"></div>
+<div class="cv-gallery-controls"><button id="cv-prev" type="button" aria-label="Previous preview view">&#8249;</button><span class="cv-gallery-caption" id="cv-gallery-caption">RF engineering · overview</span><button id="cv-next" type="button" aria-label="Next preview view">&#8250;</button></div>
+<small>Preview images are derived from general CVs. No PDF download or automatic CV delivery.</small></aside></main>
+<script>document.getElementById('cv-request-form').addEventListener('submit',function(e){e.preventDefault();});</script><script id="cv-gallery-controls">
+(function(){
+ const previews=[{id:'rf',label:'RF engineering'},{id:'embedded',label:'Embedded electronics'},{id:'python',label:'Python test automation'}];
+ const pane=document.querySelector('.preview'), cards=Array.from(document.querySelectorAll('.document'));
+ const page=document.getElementById('cv-gallery-page'),caption=document.getElementById('cv-gallery-caption');
+ const prev=document.getElementById('cv-prev'),next=document.getElementById('cv-next');
+ const full=document.getElementById('cv-gallery-full');
+ const stack=document.getElementById('cv-gallery-stack');
+ const labels=Array.from(document.querySelectorAll('.cv-stack-marker'));
+ function selectCard(index){selected=index;view=0;update();}
+ let fanOffset=0,fanOffsetX=0,fanDrag=null,suppressStackClick=false;
+ const rigidGroup=document.getElementById('cv-paper-rigid-group');
+ let radial=0;
+ const bases=[0,-2*Math.PI/3,2*Math.PI/3];
+ const labelsById=new Map(labels.map(label=>[label.dataset.cvLabel,label]));
+ function positionFan(){
+   rigidGroup.classList.add('auto-focus');
+   rigidGroup.style.transform='translate('+fanOffsetX+'px,'+fanOffset+'px)';
+   cards.forEach((card,i)=>{
+     const angle=bases[i]+radial;
+     const x=50+32*Math.sin(angle),y=29+15*(1-Math.cos(angle));
+     card.style.left=x+'%';card.style.top=y+'%';
+     card.style.transform='translateX(-50%) rotate('+(13*Math.sin(angle))+'deg)';
+     const label=labelsById.get(previews[i].id);
+     label.style.left=x+'%';label.style.top=y+'%';
+     label.style.transform='translate(-50%,calc(-100% - 8px)) rotate('+(10*Math.sin(angle))+'deg)';
+   });
+ }
+ function focusPaper(i){
+   const target=-bases[i],turn=2*Math.PI;
+   radial+=((target-radial+Math.PI+turn*2)%turn)-Math.PI;
+   selectCard(i);positionFan();
+ }
+ function endFanDrag(event){
+   if(!fanDrag || fanDrag.id!==event.pointerId)return;
+   suppressStackClick=fanDrag.moved;
+   fanDrag=null;stack.classList.remove('is-fan-dragging');
+   if(stack.hasPointerCapture(event.pointerId))stack.releasePointerCapture(event.pointerId);
+ }
+ stack.addEventListener('pointerdown',function(event){
+   if(view!==0 || event.button!==0 || event.target.closest('.cv-stack-marker'))return;
+   fanDrag={id:event.pointerId,x:event.clientX,y:event.clientY,offset:fanOffset,offsetX:fanOffsetX,moved:false};
+ });
+ stack.addEventListener('pointermove',function(event){
+   if(!fanDrag||fanDrag.id!==event.pointerId)return;
+   const dx=event.clientX-fanDrag.x,dy=event.clientY-fanDrag.y;
+   if(Math.hypot(dx,dy)>5 && !fanDrag.moved){
+     fanDrag.moved=true;
+     stack.setPointerCapture(event.pointerId);
+     stack.classList.add('is-fan-dragging');
+   }
+   if(!fanDrag.moved)return;
+   // Auto mode: free XY translation only. Rigid mode: horizontal rotation and vertical translation.
+   fanOffset=Math.max(-350,Math.min(350,fanDrag.offset+dy));
+   fanOffsetX=Math.max(-350,Math.min(350,fanDrag.offsetX+dx));
+   positionFan();
+   event.preventDefault();
+ });
+ stack.addEventListener('pointerup',endFanDrag);
+ stack.addEventListener('pointercancel',endFanDrag);
+ stack.addEventListener('click',function(event){
+   if(suppressStackClick){event.preventDefault();event.stopPropagation();suppressStackClick=false;}
+ },true);
+ cards.forEach(card=>card.addEventListener('dragstart',e=>e.preventDefault()));
+ positionFan();
+ let stackZoom=1,stackWheelAccum=0,stackLastFlip=0;
+ const stackPages=[1,1,1];
+ function refreshStackPages(){
+   cards.forEach((card,i)=>{
+     card.src=imageURL(previews[i].id,stackPages[i]);
+     card.alt=previews[i].label+' CV, page '+stackPages[i]+' of 2';
+   });
+ }
+ stack.addEventListener('wheel',function(event){
+   if(view!==0)return;
+   const hovered=event.target.closest('.document');
+   if(!hovered || !stack.contains(hovered))return;
+   if(event.ctrlKey){
+     event.preventDefault();
+     stackZoom=Math.max(1,Math.min(3,stackZoom+(event.deltaY<0?0.15:-0.15)));
+     cards.forEach(card=>{card.style.scale=stackZoom.toFixed(2)});
+     return;
+   }
+   if(event.altKey || event.metaKey || event.shiftKey || !event.deltaY)return;
+   event.preventDefault();
+   const now=performance.now();
+   // A physical wheel notch flips once; a trackpad gesture is accumulated.
+   if(now-stackLastFlip<260)return;
+   stackWheelAccum+=event.deltaMode===1?event.deltaY*16:event.deltaY;
+   if(Math.abs(stackWheelAccum)<70)return;
+   const next=stackWheelAccum>0?2:1;
+   stackWheelAccum=0;
+   if(stackPages[selected]!==next){
+     stackPages[selected]=next;
+     refreshStackPages();
+     caption.textContent=previews[selected].label+' · stack page '+next+' / 2';
+     stackLastFlip=now;
+   }
+ },{passive:false});
+
+ let zoom=1,fitWidth=0,fitHeight=0,drag=null;
+ function setZoom(value){
+   const next=Math.min(3,Math.max(1,value));
+   if(!fitWidth){
+     const fitted=page.getBoundingClientRect();
+     fitWidth=fitted.width;fitHeight=fitted.height;
+   }
+   if(!fitWidth || !fitHeight) return;
+   const oldX=full.scrollLeft,oldY=full.scrollTop;
+   const oldW=full.scrollWidth,oldH=full.scrollHeight;
+   zoom=next;
+   full.classList.toggle('is-zoomed',zoom>1);
+   if(zoom===1){
+     page.style.width='';
+     page.style.height='';
+   }else{
+     page.style.width=(fitWidth*zoom)+'px';
+     page.style.height=(fitHeight*zoom)+'px';
+   }
+   // Preserve the visible centre when document dimensions change.
+   full.scrollLeft=oldW ? (oldX+full.clientWidth/2)*(full.scrollWidth/oldW)-full.clientWidth/2 : 0;
+   full.scrollTop=oldH ? (oldY+full.clientHeight/2)*(full.scrollHeight/oldH)-full.clientHeight/2 : 0;
+ }
+ function resetZoom(){
+   zoom=1;fitWidth=0;fitHeight=0;drag=null;
+   full.classList.remove('is-zoomed','is-dragging');
+   page.style.width='';page.style.height='';
+   full.scrollTop=0;full.scrollLeft=0;
+ }
+ let selected=0,view=0; // 0 = paper stack, 1/2 = selected CV page 1/2
+ const url=(id,n)=>'resources/cv_previews/'+id+'-p'+n;
+ const localFile=location.protocol==='file:';
+ const debugTools=document.getElementById('cv-debug-tools');
+ if(localFile){
+   const reveal=document.getElementById('cv-debug-reveal');
+   reveal.hidden=false;
+   reveal.addEventListener('click',()=>{
+     debugTools.hidden=!debugTools.hidden;
+     reveal.setAttribute('aria-expanded',String(!debugTools.hidden));
+     reveal.textContent=debugTools.hidden?'Show debug controls':'Hide debug controls';
+   });
+ }
+ const diffs=document.getElementById('cv-show-diffs');
+ const obscure=document.getElementById('cv-obscure');
+ let obscured=false;
+ const imageURL=(id,n)=>url(id,n)+(diffs.checked?'-diff':'')+(obscured?'-obscure':'')+'.webp';
+ obscure.addEventListener('click',()=>{
+   obscured=!obscured;
+   obscure.setAttribute('aria-pressed',String(obscured));
+   refreshStackPages();
+   if(view)page.src=imageURL(previews[selected].id,view);
+ });
+ diffs.addEventListener('change',()=>{
+   refreshStackPages();
+   if(view)page.src=imageURL(previews[selected].id,view);
+ });
+ function update(){
+   const item=previews[selected];
+   pane.classList.toggle('cv-full-mode',view!==0);
+   cards.forEach((card,i)=>{card.classList.toggle('is-selected',i===selected);card.setAttribute('aria-pressed',String(i===selected))});
+   labels.forEach(label=>label.setAttribute('aria-pressed',String(label.dataset.cvLabel===item.id)));
+   resetZoom();
+   if(view){page.src=imageURL(item.id,view);page.alt=item.label+' CV, page '+view+' of 2'}
+   caption.textContent=item.label+' · '+(view===0?'stack page '+stackPages[selected]+' / 2':'page '+view+' / 2');
+   prev.disabled=view===0;next.disabled=view===2;
+ }
+ function turnExpandedPage(targetPage){
+   if(view===0 || targetPage===view)return;
+   // Page changes must not invoke update(), which deliberately resets zoom.
+   // Both CV pages are A4, so the existing fitted dimensions and scroll
+   // offsets remain valid when just swapping the image source.
+   view=targetPage;
+   page.src=imageURL(previews[selected].id,view);
+   page.alt=previews[selected].label+' CV, page '+view+' of 2';
+   caption.textContent=previews[selected].label+' · page '+view+' / 2';
+   prev.disabled=view===1;
+   next.disabled=view===2;
+ }
+ function choosePaper(i){
+   stackWheelAccum=0;
+   focusPaper(i);
+ }
+ function toggleExpanded(i){
+   if(view===0){
+     if(selected!==i)choosePaper(i);
+     view=stackPages[i];
+   }else{
+     view=0;
+   }
+   update();
+ }
+ cards.forEach((card,i)=>{
+   card.addEventListener('click',()=>choosePaper(i));
+   card.addEventListener('dblclick',()=>toggleExpanded(i));
+   card.addEventListener('keydown',e=>{
+     if(e.key==='Enter'||e.key===' '){e.preventDefault();choosePaper(i)}
+   });
+ });
+ labels.forEach(label=>{
+   const i=previews.findIndex(item=>item.id===label.dataset.cvLabel);
+   if(i<0)return;
+   label.addEventListener('click',()=>choosePaper(i));
+   label.addEventListener('dblclick',()=>toggleExpanded(i));
+ });
+ let fullWheelAccum=0,fullLastTurn=0;
+ full.addEventListener('wheel',function(event){
+   if(view===0)return;
+   if(event.ctrlKey){
+     event.preventDefault();
+     setZoom(zoom+(event.deltaY<0?0.15:-0.15));
+     return;
+   }
+   if(event.altKey||event.metaKey||event.shiftKey||!event.deltaY)return;
+   // Wheel always turns pages, even at increased zoom.
+   // Only dragging the native scrollbars moves within an enlarged page.
+   event.preventDefault();
+   const now=performance.now();
+   if(now-fullLastTurn<260)return;
+   fullWheelAccum+=event.deltaMode===1?event.deltaY*16:event.deltaY;
+   if(Math.abs(fullWheelAccum)<70)return;
+   const next=fullWheelAccum>0?2:1;
+   fullWheelAccum=0;
+   if(view!==next){turnExpandedPage(next);fullLastTurn=now;}
+ },{passive:false});
+ full.addEventListener('pointerdown',function(event){
+   if(view===0 || event.button!==0 || event.target!==page) return;
+   // Capture only when the preview is actually scrollable; otherwise
+   // preserve native scrolling and scrollbar dragging.
+   if(full.scrollWidth<=full.clientWidth && full.scrollHeight<=full.clientHeight) return;
+   drag={id:event.pointerId,x:event.clientX,y:event.clientY,left:full.scrollLeft,top:full.scrollTop};
+   // Do not capture pointer on press: capture suppresses image dblclick at zoom.
+   // Activate capture only after an actual drag threshold is crossed.
+   drag.moved=false;
+   full.classList.add('is-dragging');
+ });
+ full.addEventListener('pointermove',function(event){
+   if(!drag || event.pointerId!==drag.id) return;
+   if(Math.hypot(event.clientX-drag.x,event.clientY-drag.y)<5 && !drag.moved)return;
+   if(!drag.moved){drag.moved=true;full.setPointerCapture(event.pointerId)}
+   full.scrollLeft=drag.left-(event.clientX-drag.x);
+   full.scrollTop=drag.top-(event.clientY-drag.y);
+ });
+ function endDrag(event){
+   if(!drag || event.pointerId!==drag.id) return;
+   drag=null;full.classList.remove('is-dragging');
+   if(full.hasPointerCapture(event.pointerId)) full.releasePointerCapture(event.pointerId);
+ }
+ full.addEventListener('pointerup',endDrag);
+ full.addEventListener('pointercancel',endDrag);
+ page.addEventListener('dragstart',e=>e.preventDefault());
+ full.addEventListener('dblclick',event=>{
+   if(view===0 || event.button!==0)return;
+   event.preventDefault();
+   toggleExpanded(selected);
+ });
+ prev.addEventListener('click',()=>{if(view>1)turnExpandedPage(view-1);else if(view===1){view=0;update()}});
+ next.addEventListener('click',()=>{if(view===0){view=1;update()}else if(view<2)turnExpandedPage(view+1)});
+ // Built-in defaults used for both local previews and hosted pages.
+ const builtInDefault={version:1,selected:'embedded',stackPages:[1,1,1],
+   radial:-4.18879,x:108,y:-235,stackZoom:2.2,
+   focusOutline:true,obscure:true,expandedPage:0,fullZoom:1};
+ selected=previews.findIndex(item=>item.id===builtInDefault.selected);
+ radial=builtInDefault.radial;
+ fanOffsetX=builtInDefault.x;fanOffset=builtInDefault.y;
+ stackZoom=builtInDefault.stackZoom;
+ diffs.checked=builtInDefault.focusOutline;
+ obscured=builtInDefault.obscure;
+ obscure.setAttribute('aria-pressed',String(obscured));
+ builtInDefault.stackPages.forEach((n,i)=>{stackPages[i]=n});
+ view=builtInDefault.expandedPage;
+ positionFan();
+ cards.forEach(card=>{card.style.scale=stackZoom.toFixed(2)});
+ refreshStackPages();
+ update();
+ if(localFile){
+   const output=document.getElementById('cv-config-output');
+   const status=document.getElementById('cv-config-status');
+   // New default revision: do not let an older locally saved config silently override the shared default.
+   const storageKey='unstuck-cv-preview-default-v2';
+   function snapshot(){
+     return {version:1,selected:previews[selected].id,stackPages:stackPages.slice(),
+       radial:Number(radial.toFixed(5)),x:Math.round(fanOffsetX),y:Math.round(fanOffset),
+       stackZoom:Number(stackZoom.toFixed(2)),focusOutline:diffs.checked,obscure:obscured,
+       expandedPage:view,fullZoom:Number(zoom.toFixed(2))};
+   }
+   function restore(config){
+     if(!config || config.version!==1)return;
+     const i=previews.findIndex(p=>p.id===config.selected);
+     if(i>=0)selected=i;
+     if(Array.isArray(config.stackPages)&&config.stackPages.length===3)
+       config.stackPages.forEach((n,j)=>{stackPages[j]=n===2?2:1});
+     radial=Number.isFinite(config.radial)?config.radial:0;
+     fanOffsetX=Number.isFinite(config.x)?Math.max(-350,Math.min(350,config.x)):0;
+     fanOffset=Number.isFinite(config.y)?Math.max(-350,Math.min(350,config.y)):0;
+     stackZoom=Number.isFinite(config.stackZoom)?Math.max(1,Math.min(3,config.stackZoom)):1;
+     diffs.checked=Boolean(config.focusOutline);
+     obscured=Boolean(config.obscure);
+     obscure.setAttribute('aria-pressed',String(obscured));
+     view=config.expandedPage===1||config.expandedPage===2?config.expandedPage:0;
+     positionFan();cards.forEach(card=>{card.style.scale=stackZoom.toFixed(2)});
+     refreshStackPages();update();
+     // Images are loaded asynchronously; applying zoom after page load ensures correct fit.
+     if(view && Number.isFinite(config.fullZoom)&&config.fullZoom>1){
+       page.addEventListener('load',()=>setZoom(config.fullZoom),{once:true});
+     }
+   }
+   document.getElementById('cv-export-config').addEventListener('click',()=>{
+     output.value=JSON.stringify(snapshot(),null,2);output.focus();output.select();
+     status.textContent='Copy this JSON as a source default, or save it in this browser.';
+   });
+   document.getElementById('cv-save-default').addEventListener('click',()=>{
+     try{localStorage.setItem(storageKey,JSON.stringify(snapshot()));status.textContent='Local default saved for this browser and file origin.';}
+     catch(error){status.textContent='Browser storage unavailable. Use Export config instead.';}
+   });
+   try{const stored=localStorage.getItem(storageKey);if(stored)restore(JSON.parse(stored))}
+   catch(error){status.textContent='No accessible saved local default.';}
+ }
+})();
+</script></body></html>
