@@ -399,7 +399,7 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
    const output=document.getElementById('cv-config-output');
    const status=document.getElementById('cv-config-status');
    // New default revision: do not let an older locally saved config silently override the shared default.
-   const storageKey='unstuck-cv-preview-default-v2';
+   const storageKey='unstuck-cv-preview-default-v3-'+[builtInDefault.selected,builtInDefault.radial,builtInDefault.x,builtInDefault.y,builtInDefault.stackZoom,Number(builtInDefault.focusOutline),Number(builtInDefault.obscure)].join('_');
    function snapshot(){
      return {version:1,selected:previews[selected].id,stackPages:stackPages.slice(),
        radial:Number(radial.toFixed(5)),x:Math.round(fanOffsetX),y:Math.round(fanOffset),
