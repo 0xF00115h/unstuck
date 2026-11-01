@@ -6,7 +6,7 @@
     "cv-request.html": "ae873b31f474d019221778f66e510f81fab16583fcfd7285916089c105a2d026",
     "cv-request/index.html": "6e0ca67fca930e4ef57556336402e2614c1c862f4483d24de31fc1482267b2af",
     "history/index.html": "4bedcaaae0049a0225b79e04e9ea8c728235894ef6bd316b8637c498f44fd3c3",
-    "index.html": "1c7f962206bdb4dbd33a81cc4452e11dee46c1f9bfeacbb0667624a01fd3e613",
+    "index.html": "c545be6f9f425c43c05ca8412ae3d15caef2c8b3b04517bc7db795e49412c236",
     "offer/index.html": "e27c014eb9e980cc87c43165263251bb0019a7141cb78a8c1be85dfe2ea44bbe",
     "overview/index.html": "43a9a3ca3627871951bd610f9be946c2ae01fadd198563b566cc069caf23709c",
     "resources/bench_pics/01_multichannel_validation_setup.webp": "2181d4e820d1f2263845bed1272a2c23e980e24d75869a86207458343c28fbe4",
@@ -58,6 +58,6 @@
     "resources/profile/matthew-brice-profile.jpg": "1438605f6b5041382670e1e369f998cd4b05f2614c855270527ddea6885b0ba1",
     "theme.generated.css": "f246340e2bf567cab7a3758d27b119ea703e4a79de934d04aea4dbcbf6128058"
   },
-  "site_sha256": "4a206f5a9ace65ebb68850c9f362ada856986b8dfab6b6753ff9e7b1ce9e4489",
+  "site_sha256": "16b0153c3906f8797dfba08e4f37c57edc93eba7e9a24a3f7ac6432c1585ac8e",
   "version": 1
 }
