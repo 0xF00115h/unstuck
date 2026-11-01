@@ -12,7 +12,7 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
 .choice input:checked{background:#ececec;border-color:#ececec}.choice input[type=checkbox]:checked:after{content:'';position:absolute;left:5px;top:3px;width:5px;height:9px;border-right:2px solid #151515;border-bottom:2px solid #151515;transform:rotate(45deg)}.choice input[type=radio]:checked:after{content:'';position:absolute;inset:7px;border-radius:50%;background:#111}
 .choice input:focus-visible,.field:focus-visible{outline:2px solid #abccea;outline-offset:2px}
 .fieldlabel{margin-top:9px;margin-bottom:5px}.field{display:block;width:100%;background:#0a0b0e;color:#eee;border:1px solid #404349;border-radius:22px;padding:10px 16px;font:inherit;min-height:40px}.field::placeholder{color:#82858a}textarea.field{border-radius:15px;resize:vertical;min-height:64px}
-.privacy,.status{font-size:12px;color:#a6a8ac}.submit{border:1px solid #575b61;background:#202329;color:#b4b8bd;border-radius:22px;padding:11px 19px;font:inherit;cursor:not-allowed}
+.privacy,.status{font-size:12px;color:#a6a8ac}.submit{border:1px solid #66798b;background:#273442;color:#e8eff6;border-radius:22px;padding:11px 19px;font:inherit;cursor:pointer}.submit:hover:not(:disabled),.submit:focus-visible:not(:disabled){background:#35485a;border-color:#91abc7}.submit:disabled{opacity:.55;cursor:wait}
 .preview{min-width:0;background:linear-gradient(150deg,#1b2029,#11151b);border-left:1px solid #383d46;display:flex;flex-direction:column;padding:clamp(20px,3vw,36px);overflow:hidden}
 .preview h2{font-size:17px;margin:0 0 5px}.preview p{font-size:13px;color:#a9b1be;margin:0}.documents{position:relative;flex:1;min-height:280px;margin-top:24px}
 .document{position:absolute;width:min(43%,225px);aspect-ratio:320/450;object-fit:cover;background:white;box-shadow:0 15px 35px #0009;border:1px solid #7c8795;top:9%;left:29%;transform:rotate(0deg);filter:saturate(.7)}
@@ -185,7 +185,7 @@ body>main{height:calc(100dvh - var(--cv-site-bar-height))}
 <label for="cv-email" class="fieldlabel">Work email</label><input class="field" id="cv-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="254">
 <label for="cv-organisation" class="fieldlabel">Organisation (optional)</label><input class="field" id="cv-organisation" name="organisation" autocomplete="organization" placeholder="Company name" maxlength="160">
 <label for="cv-message" class="fieldlabel">Message (optional)</label><textarea class="field" id="cv-message" name="message" placeholder="Anything useful to know" maxlength="2000" rows="2"></textarea>
-<p class="privacy">Contact details will only be used to respond to your request. No CV files are delivered automatically.</p><button type="submit" class="submit" disabled>Request a focused CV</button><p class="status" role="status">Requests are not yet enabled. Please use <a style="color:#cddbea" href="index.html#contact">Contact</a> for now.</p></form></section>
+<p class="privacy">Contact details will only be used to respond to your request. Your selected CV PDFs will be emailed after you confirm your address.</p><label class="cv-hp" aria-hidden="true" style="position:absolute;left:-10000px"><span>Website</span><input name="website" tabindex="-1" autocomplete="off"></label><button type="submit" class="submit">Request a focused CV</button><p class="status" role="status">Select your CV profiles and request a confirmation email.</p></form></section>
 <aside class="preview" aria-label="Illustrative CV previews"><button id="cv-debug-reveal" type="button" class="cv-obscure-toggle" hidden aria-expanded="false" aria-controls="cv-debug-tools">Show debug controls</button><div id="cv-debug-tools" class="cv-debug-tools" hidden><label class="cv-diff-toggle"><input id="cv-show-diffs" type="checkbox"> Show CV focus (yellow outlines)</label><label class="cv-diff-toggle"><input type="checkbox" id="cv-interest-colours"> Six-colour interest outlines (experimental)</label><button class="cv-obscure-toggle" id="cv-obscure" type="button" aria-pressed="false">Obscure main body</button><button type="button" id="cv-export-config" class="cv-obscure-toggle">Export config</button><textarea id="cv-config-output" readonly rows="3" aria-label="Exported viewer configuration" placeholder="Exported JSON appears here"></textarea><button type="button" id="cv-save-default" class="cv-obscure-toggle">Save as local default</button><small id="cv-config-status"></small></div><div class="documents" id="cv-gallery-stack" aria-label="Select a CV to view its two pages"><div class="cv-paper-rigid-group" id="cv-paper-rigid-group">
 <button class="cv-stack-marker cv-stack-marker--1" type="button" data-cv-label="embedded" aria-pressed="false"><span class="cv-stack-marker-no">1</span><span class="cv-stack-marker-name">Embedded</span></button>
 <button class="cv-stack-marker cv-stack-marker--2" type="button" data-cv-label="rf" aria-pressed="true"><span class="cv-stack-marker-no">2</span><span class="cv-stack-marker-name">RF Dev</span></button>
@@ -196,7 +196,33 @@ body>main{height:calc(100dvh - var(--cv-site-bar-height))}
 <div class="cv-gallery-full" id="cv-gallery-full" aria-live="polite"><img id="cv-gallery-page" alt="Selected CV page"></div>
 
 </aside></main>
-<script>document.getElementById('cv-request-form').addEventListener('submit',function(e){e.preventDefault();});</script><script src="resources/cv_previews/interest-map.js"></script><script id="cv-gallery-controls">
+<script id="cv-request-submit">
+(function(){
+ const form=document.getElementById('cv-request-form');
+ const button=form.querySelector('button[type="submit"]');
+ const status=form.querySelector('.status');
+ form.addEventListener('submit',async function(event){
+  event.preventDefault();
+  if(!form.reportValidity())return;
+  const areas=Array.from(form.querySelectorAll('input[name="areas"]:checked'));
+  const basis=Array.from(form.querySelectorAll('input[name="cv_basis"]:checked'));
+  if(!areas.length||!basis.length){status.textContent='Choose an interest and at least one CV basis.';return;}
+  const payload=new URLSearchParams();
+  new FormData(form).forEach((value,key)=>payload.append((key==='areas'||key==='cv_basis')?key+'[]':key,value));
+  button.disabled=true;
+  status.textContent='Sending request…';
+  try{
+   const response=await fetch('cv-request-handler.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:payload.toString(),cache:'no-store'});
+   const result=await response.json();
+   if(!response.ok||!result.ok)throw new Error(result.message||'Request could not be sent');
+   status.textContent='Check your email for a confirmation link. Your selected CV PDFs will be sent after confirmation.';
+   form.reset();
+  }catch(error){
+   status.textContent=error instanceof Error&&error.message ? error.message : 'Unable to send your request. Please use the Contact page.';
+  }finally{button.disabled=false;}
+ });
+})();
+</script><script src="resources/cv_previews/interest-map.js"></script><script id="cv-gallery-controls">
 (function(){
  const previews=[{id:'rf',label:'RF engineering'},{id:'embedded',label:'Embedded electronics'},{id:'python',label:'Python test automation'}];
  const pane=document.querySelector('.preview'), cards=Array.from(document.querySelectorAll('.document'));
