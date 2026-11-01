@@ -12,6 +12,8 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
 .choice input:checked{background:#ececec;border-color:#ececec}.choice input[type=checkbox]:checked:after{content:'';position:absolute;left:5px;top:3px;width:5px;height:9px;border-right:2px solid #151515;border-bottom:2px solid #151515;transform:rotate(45deg)}.choice input[type=radio]:checked:after{content:'';position:absolute;inset:7px;border-radius:50%;background:#111}
 .choice input:focus-visible,.field:focus-visible{outline:2px solid #abccea;outline-offset:2px}
 .fieldlabel{margin-top:9px;margin-bottom:5px}.field{display:block;width:100%;background:#0a0b0e;color:#eee;border:1px solid #404349;border-radius:22px;padding:10px 16px;font:inherit;min-height:40px}.field::placeholder{color:#82858a}textarea.field{border-radius:15px;resize:vertical;min-height:64px}
+.privacy a{color:#bdd7ed;text-decoration:underline;text-underline-offset:2px;cursor:pointer}.privacy a:focus-visible{outline:2px solid #bdd7ed;outline-offset:2px}.cv-privacy-details{font-size:14px;color:#bdc8d3;border:1px solid #404b59;border-radius:9px;padding:7px 10px;margin:4px 0 9px}.cv-privacy-details summary{cursor:pointer;color:#dce8f2;font-weight:600}.cv-privacy-body{padding-top:4px;line-height:1.45}.cv-privacy-body h3{font-size:14px;margin:7px 0 2px;color:#e4e9ee}.cv-privacy-body p{margin:2px 0 6px}
+.cv-legal-notes{border-top:1px solid #404b59;margin-top:10px;padding-top:6px}.cv-legal-note{border:1px solid #404b59;border-radius:9px;margin:6px 0;overflow:hidden}.cv-legal-note>summary{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 9px;list-style:none}.cv-legal-note>summary::-webkit-details-marker{display:none}.cv-legal-note>summary:after{content:'+';font-size:18px;font-weight:400}.cv-legal-note[open]>summary:after{content:'−'}.cv-legal-note small{display:block;font-weight:400;color:#a6b4c0;margin-top:2px}.cv-legal-note-body{padding:0 9px 7px}.cv-legal-note-body ul{margin:4px 0 7px;padding-left:18px}.cv-legal-note-body li{margin:2px 0}.cv-legal-note-body a{color:#bdd7ed;text-decoration:underline;text-underline-offset:2px}.cv-legal-disclaimer{color:#a6b4c0}
 .privacy,.status{font-size:12px;color:#a6a8ac}.submit{border:1px solid #66798b;background:#273442;color:#e8eff6;border-radius:22px;padding:11px 19px;font:inherit;cursor:pointer}.submit:hover:not(:disabled),.submit:focus-visible:not(:disabled){background:#35485a;border-color:#91abc7}.submit:disabled{opacity:.55;cursor:wait}
 .preview{min-width:0;background:linear-gradient(150deg,#1b2029,#11151b);border-left:1px solid #383d46;display:flex;flex-direction:column;padding:clamp(20px,3vw,36px);overflow:hidden}
 .preview h2{font-size:17px;margin:0 0 5px}.preview p{font-size:13px;color:#a9b1be;margin:0}.documents{position:relative;flex:1;min-height:280px;margin-top:24px}
@@ -185,7 +187,38 @@ body>main{height:calc(100dvh - var(--cv-site-bar-height))}
 <label for="cv-email" class="fieldlabel">Work email</label><input class="field" id="cv-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="254">
 <label for="cv-organisation" class="fieldlabel">Organisation (optional)</label><input class="field" id="cv-organisation" name="organisation" autocomplete="organization" placeholder="Company name" maxlength="160">
 <label for="cv-message" class="fieldlabel">Message (optional)</label><textarea class="field" id="cv-message" name="message" placeholder="Anything useful to know" maxlength="2000" rows="2"></textarea>
-<p class="privacy">Contact details will only be used to respond to your request. Your selected CV PDFs will be emailed after you confirm your address.</p><label class="cv-hp" aria-hidden="true" style="position:absolute;left:-10000px"><span>Website</span><input name="website" tabindex="-1" autocomplete="off"></label><button type="submit" class="submit">Request a focused CV</button><p class="status" role="status">Select your CV profiles and request a confirmation email.</p></form></section>
+<p class="privacy">Your email is used to confirm your request and send the selected CVs. It is not kept in the delivery log. <a href="#cv-privacy-notice" id="cv-privacy-link" aria-controls="cv-privacy-notice" aria-expanded="false">How your request is handled</a></p>
+<details class="cv-privacy-details" id="cv-privacy-notice">
+<summary>Privacy and your request</summary>
+<div class="cv-privacy-body">
+<h3>Sending CVs</h3>
+<p>Your email is kept in a temporary request file until the CVs are sent, then removed after successful delivery. Unconfirmed or expired requests may remain until cleared. The address is not used for marketing.</p>
+<h3>Delivery log</h3>
+<p>The log records the time, selected CVs, delivery outcome and a request reference—not the email address.</p>
+<h3>Asking for more information</h3>
+<p>Enquiries may be kept in normal business email or contact records so they can be answered. They are not added to the CV delivery log or used for unrelated marketing.</p>
+
+<div class="cv-legal-notes">
+<h3>UK and EU data rights</h3>
+<p>Short summaries, with links to official guidance.</p>
+<details class="cv-legal-note"><summary><span>United Kingdom — UK GDPR<small>UK GDPR · Data Protection Act 2018</small></span></summary>
+<div class="cv-legal-note-body">
+<p>UK rules cover how personal information is collected, used and kept.</p>
+<p><strong>Rights may include:</strong></p>
+<ul><li>Knowing how data is used, and seeing or correcting it</li><li>Asking for deletion or limits on use</li><li>Objecting to certain uses</li><li>Complaining to the Information Commissioner's Office</li></ul>
+<p><a href="https://ico.org.uk/for-the-public/" target="_blank" rel="noopener noreferrer">ICO — data protection rights ↗</a></p>
+</div></details>
+<details class="cv-legal-note"><summary><span>European Union — EU GDPR<small>Regulation (EU) 2016/679</small></span></summary>
+<div class="cv-legal-note-body">
+<p>EU rules require clear reasons for using personal data, collecting only what is needed and limiting how long it is kept.</p>
+<p><strong>Rights may include:</strong></p>
+<ul><li>Information, access, correction and deletion</li><li>Limits on use, objections and data portability</li><li>Protections around certain automated decisions</li><li>Complaints to a national data protection authority</li></ul>
+<p><a href="https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en" target="_blank" rel="noopener noreferrer">European Commission — GDPR rights ↗</a></p>
+</div></details>
+
+</div>
+</div>
+</details><label class="cv-hp" aria-hidden="true" style="position:absolute;left:-10000px"><span>Website</span><input name="website" tabindex="-1" autocomplete="off"></label><button type="submit" class="submit">Request a focused CV</button><p class="status" role="status">Select your CV profiles and request a confirmation email.</p></form></section>
 <aside class="preview" aria-label="Illustrative CV previews"><button id="cv-debug-reveal" type="button" class="cv-obscure-toggle" hidden aria-expanded="false" aria-controls="cv-debug-tools">Show debug controls</button><div id="cv-debug-tools" class="cv-debug-tools" hidden><label class="cv-diff-toggle"><input id="cv-show-diffs" type="checkbox"> Show CV focus (yellow outlines)</label><label class="cv-diff-toggle"><input type="checkbox" id="cv-interest-colours"> Six-colour interest outlines (experimental)</label><button class="cv-obscure-toggle" id="cv-obscure" type="button" aria-pressed="false">Obscure main body</button><button type="button" id="cv-export-config" class="cv-obscure-toggle">Export config</button><textarea id="cv-config-output" readonly rows="3" aria-label="Exported viewer configuration" placeholder="Exported JSON appears here"></textarea><button type="button" id="cv-save-default" class="cv-obscure-toggle">Save as local default</button><small id="cv-config-status"></small></div><div class="documents" id="cv-gallery-stack" aria-label="Select a CV to view its two pages"><div class="cv-paper-rigid-group" id="cv-paper-rigid-group">
 <button class="cv-stack-marker cv-stack-marker--1" type="button" data-cv-label="embedded" aria-pressed="false"><span class="cv-stack-marker-no">1</span><span class="cv-stack-marker-name">Embedded</span></button>
 <button class="cv-stack-marker cv-stack-marker--2" type="button" data-cv-label="rf" aria-pressed="true"><span class="cv-stack-marker-no">2</span><span class="cv-stack-marker-name">RF Dev</span></button>
@@ -712,4 +745,7 @@ body>main{height:calc(100dvh - var(--cv-site-bar-height))}
  refreshRecommendation();
  refreshSelection();
 })();
-</script></body></html>
+</script><script>
+(function(){const link=document.getElementById("cv-privacy-link"),details=document.getElementById("cv-privacy-notice");if(!link||!details)return;link.addEventListener("click",function(e){e.preventDefault();details.open=true;link.setAttribute("aria-expanded","true");details.scrollIntoView({block:"nearest",behavior:"smooth"});});details.addEventListener("toggle",function(){link.setAttribute("aria-expanded",String(details.open));});})();
+</script>
+</body></html>
