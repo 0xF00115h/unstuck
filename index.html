@@ -3356,6 +3356,92 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   .topbar-nav a{white-space:nowrap;letter-spacing:.055em}
 }
 </style>
+<style id="v5-shared-cv-banner-parity">
+/* Match cv-request.template.html's banner geometry, typography and spacing.
+   Main-page header is nested inside .page; keep its full-bleed positioning. */
+@media(min-width:981px){
+  .topbar{
+    position:sticky!important;top:0!important;left:auto!important;right:auto!important;
+    z-index:900!important;width:100vw!important;max-width:none!important;
+    height:74px!important;min-height:74px!important;
+    margin:0 0 26px calc(50% - 50vw)!important;
+    padding:0 max(20px,calc((100vw - 1240px)/2 + 14px))!important;
+    display:flex!important;flex-wrap:nowrap!important;
+    align-items:center!important;justify-content:space-between!important;gap:14px!important;
+    background:#20272b!important;border:0!important;border-bottom:1px solid rgba(239,228,206,.18)!important;
+    border-radius:0!important;box-shadow:0 10px 26px rgba(0,0,0,.23)!important;
+    backdrop-filter:none!important;overflow:visible!important;
+  }
+  .topbar-brand{display:flex!important;align-items:center!important;gap:12px!important;flex:0 1 auto!important;min-width:0!important}
+  .topbar-company-lockup{display:flex!important;align-items:center!important;gap:9px!important;flex:0 0 auto!important;min-width:0!important}
+  .topbar-role{display:block!important;flex:0 1 auto!important;min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;font:13px/1.3 Arial,Helvetica,sans-serif!important;color:#c3c0b8!important}
+  .topbar-nav{display:flex!important;flex:0 1 auto!important;align-items:center!important;flex-wrap:nowrap!important;gap:clamp(5px,.8vw,11px)!important;min-width:0!important;overflow:visible!important}
+  .topbar-nav a{display:block!important;flex:0 0 auto!important;padding:7px clamp(5px,.6vw,9px)!important}
+}
+.topbar::before,.topbar::after{content:none!important;display:none!important}
+.topbar .company-symbol--topbar{display:block!important;object-fit:contain!important;width:42px!important;height:36px!important;max-width:none!important;flex:0 0 42px!important;background:#fff!important;border:1px solid rgba(255,255,255,.32)!important;box-shadow:0 7px 18px rgba(0,0,0,.18)!important}
+.topbar .brand-wordmark--topbar{display:block!important;object-fit:contain!important;width:145px!important;height:auto!important;max-width:none!important;flex:0 0 145px!important}
+.topbar .topbar-nav a{border:1px solid rgba(255,255,255,.12)!important;border-radius:999px!important;background:rgba(255,255,255,.055)!important;color:#efe4d0!important;font:700 12px/1.2 Arial,Helvetica,sans-serif!important;letter-spacing:.055em!important;text-transform:none!important;text-decoration:none!important;white-space:nowrap!important}
+.topbar .topbar-nav a:hover,.topbar .topbar-nav a:focus-visible{background:rgba(255,255,255,.13)!important;color:#fff6e8!important;text-decoration:none!important}
+.topbar .topbar-menu{display:none!important}
+@media(min-width:981px) and (max-width:1180px){
+  .topbar-role{display:none!important}
+}
+@media(min-width:641px) and (max-width:980px){
+  .topbar{
+    position:sticky!important;top:0!important;width:100vw!important;max-width:none!important;
+    height:auto!important;min-height:74px!important;margin:0 0 26px calc(50% - 50vw)!important;
+    display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:space-between!important;
+    gap:8px!important;padding:10px 18px!important;overflow:visible!important;
+    background:#20272b!important;border:0!important;border-bottom:1px solid rgba(239,228,206,.18)!important;
+    border-radius:0!important;box-shadow:0 10px 26px rgba(0,0,0,.23)!important;
+  }
+  .topbar-brand{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important;flex:1 1 auto!important}
+  .topbar-company-lockup{display:flex!important;align-items:center!important;gap:9px!important;flex:0 0 auto!important}
+  .topbar-role{display:block!important;flex:0 1 auto!important;min-width:0!important;white-space:normal!important;overflow:visible!important;font:13px/1.3 Arial,Helvetica,sans-serif!important;color:#c3c0b8!important}
+  .topbar-nav{position:relative!important;display:flex!important;flex:1 1 100%!important;flex-wrap:nowrap!important;gap:clamp(5px,.8vw,11px)!important;overflow-x:auto!important;padding-bottom:2px!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important}
+  .topbar-nav a{padding:7px clamp(5px,.6vw,9px)!important}
+}
+@media(max-width:640px){
+  .topbar,.mobile-topbar-compact .topbar,.mobile-nav-open .topbar{
+    position:fixed!important;top:0!important;left:0!important;right:0!important;
+    z-index:1000!important;width:100vw!important;max-width:none!important;
+    height:40px!important;min-height:40px!important;
+    display:grid!important;grid-template-columns:minmax(0,1fr) 36px!important;
+    align-items:center!important;justify-content:space-between!important;
+    gap:6px!important;margin:0!important;padding:0 7px 0 10px!important;
+    border:0!important;border-bottom:1px solid rgba(239,228,206,.18)!important;
+    border-radius:0!important;background:#20272b!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.23)!important;overflow:visible!important;
+  }
+  .topbar-brand{display:flex!important;align-items:center!important;gap:0!important;min-width:0!important}
+  .topbar-company-lockup{display:flex!important;align-items:center!important;gap:7px!important;max-width:100%!important;overflow:hidden!important}
+  .topbar .company-symbol--topbar{width:34px!important;height:30px!important;flex:0 0 34px!important}
+  .topbar .brand-wordmark--topbar{width:120px!important;flex:0 0 120px!important}
+  .topbar-role{display:none!important}
+  .topbar .topbar-menu{display:inline-flex!important;justify-content:center!important;align-items:center!important;width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;border:0!important;border-radius:10px!important;background:transparent!important;color:#f5ead8!important;font:800 16px/1 Arial,Helvetica,sans-serif!important;cursor:pointer!important}
+  .topbar .topbar-menu:hover,.topbar .topbar-menu:focus-visible{background:rgba(255,255,255,.12)!important}
+  .topbar .topbar-nav{position:absolute!important;top:100%!important;left:0!important;right:0!important;
+    z-index:1001!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    flex:none!important;gap:6px!important;padding:8px 8px 10px!important;
+    background:#20272b!important;border-bottom:1px solid rgba(255,255,255,.15)!important;
+    box-shadow:0 14px 20px rgba(0,0,0,.32)!important;
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+    transform:translateY(-5px)!important;max-height:none!important;overflow:hidden!important;
+    transition:opacity .15s ease,transform .15s ease,visibility 0s linear .15s!important;
+  }
+  body.mobile-nav-open .topbar .topbar-nav{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important;max-height:none!important;overflow:visible!important}
+  .topbar .topbar-nav a{display:flex!important;align-items:center!important;justify-content:center!important;min-height:34px!important;padding:8px 5px!important;font-size:10.5px!important;letter-spacing:.04em!important;text-align:center!important}
+}
+</style>
+<style id="v5-main-nav-current-section">
+/* Mirror the CV page's active-pill treatment for the main site's in-page sections. */
+.topbar .topbar-nav a[aria-current="location"]{
+  border-color:#aab3bd!important;
+  background:rgba(255,255,255,.14)!important;
+  color:#fff!important;
+}
+</style>
 </head>
 <body>
 <div class="page">
@@ -3372,7 +3458,6 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 <a href="#intro">Overview</a>
 <a href="#engagements">Offer</a>
 <a href="#cases">Cases</a>
-<a href="#proof">Evidence</a>
 <a href="#chronology">History</a>
 <a href="cv-request.html">Request a CV</a>
 <a href="#contact">Contact</a>
@@ -3413,7 +3498,6 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 <a href="#intro">Overview</a>
 <a href="#engagements">Offer</a>
 <a href="#cases">Cases</a>
-<a href="#proof">Evidence</a>
 <a href="#chronology">History</a>
 <a href="cv-request.html">Request a CV</a>
 <a href="#contact">Contact</a>
@@ -3453,6 +3537,28 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
    <span class="capability-item">Measurement, test automation, and technical handover</span>
   </div>
  </div>
+ <div class="bench-evidence-intro"><strong>Engineering in practice</strong> — Hardware development and prototyping; Bring-up and fault investigation; Instrumentation and validation.</div>
+<div class="bench-evidence-grid" aria-label="Photographic engineering evidence">
+ <figure><a href="resources/bench_pics/01_multichannel_validation_setup_cup_edit.webp" target="_blank" rel="noopener"><img loading="lazy" src="resources/bench_pics/01_multichannel_validation_setup_cup_edit.webp" alt="Multichannel electronics validation setup"></a><figcaption>Multichannel validation</figcaption></figure>
+ <figure><a href="resources/bench_pics/02_pear-01_pcb_on_bench_dust_edit.webp" target="_blank" rel="noopener"><img loading="lazy" src="resources/bench_pics/02_pear-01_pcb_on_bench_dust_edit.webp" alt="PEAR-1 electronics prototype PCB"></a><figcaption>PEAR-1 prototype PCB</figcaption></figure>
+ <figure><a href="resources/bench_pics/03_prototyping_bench.webp" target="_blank" rel="noopener"><img loading="lazy" src="resources/bench_pics/03_prototyping_bench.webp" alt="Independent electronics prototyping bench"></a><figcaption>Independent prototyping bench</figcaption></figure>
+ <figure><a href="resources/bench_pics/04_prototyping_bench.webp" target="_blank" rel="noopener"><img loading="lazy" src="resources/bench_pics/04_prototyping_bench.webp" alt="Wider view of the independent electronics workbench"></a><figcaption>Independent engineering workspace</figcaption></figure>
+</div>
+<style id="bench-evidence-grid-style">
+.bench-evidence-intro{margin:20px 0 0;line-height:1.6}
+.bench-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0 0}
+.bench-evidence-grid figure{margin:0;min-width:0;background:#20272b;border:1px solid #49515a;border-radius:10px;overflow:hidden}
+.bench-evidence-grid figure a{display:block;cursor:zoom-in}
+.bench-evidence-grid img{display:block;width:100%;height:clamp(145px,19vw,230px);object-fit:cover}
+.bench-evidence-grid figure a:hover img{filter:brightness(1.09)}
+.bench-evidence-grid figcaption{padding:9px 12px;color:#efe9de;font:600 12px/1.4 Arial,sans-serif}
+.bench-evidence-summary{display:flex;flex-direction:column;justify-content:center;padding:18px;background:#20272b;color:#efe9de;border:1px solid #49515a;border-radius:10px}
+.bench-evidence-summary strong{font:700 16px/1.4 Arial,sans-serif}
+.bench-evidence-summary ul{padding-left:20px;margin:8px 0 0}
+.bench-evidence-summary li{margin:6px 0;font:13px/1.5 Arial,sans-serif}
+@media(max-width:600px){.bench-evidence-grid{grid-template-columns:1fr}.bench-evidence-grid img{height:205px}}
+</style>
+
 </section>
 <section class="section stack" id="engagements">
  <h2>
@@ -3521,12 +3627,27 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   Scope is agreed from the actual engineering need. It may be remote, on-site, hybrid, review-led, implementation-heavy, milestone-based, or time-boxed depending on hardware access and team context.
  </p>
 </section>
-<section class="section stack" id="cases" data-evidence-browse-context="Development evidence" data-evidence-forward-href="#where" data-evidence-forward-label="Workflows" data-evidence-forward-secondary-href="#proof" data-evidence-forward-secondary-label="Detailed evidence">
+<div class="enough-cta" role="navigation" aria-label="Skip ahead to contact or CV request">
+ <span class="enough-cta-line"></span>
+ <span class="enough-cta-prompt">Enough already… where do I sign?</span>
+ <a class="enough-cta-action" href="#contact">Contact</a>
+ <a class="enough-cta-action" href="cv-request.html">Request a CV</a>
+ <span class="enough-cta-line"></span>
+</div>
+<style id="enough-cta-style">
+.enough-cta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px 0 24px;padding:9px 10px;color:inherit;font-size:12px;line-height:1.5}
+.enough-cta-line{height:1px;min-width:15px;flex:1 1 35px;background:currentColor;opacity:.17}
+.enough-cta-prompt{font-style:italic;opacity:.85}
+.enough-cta-action{display:inline-block;padding:4px 9px;border:1px solid currentColor;border-radius:6px;color:inherit;text-decoration:none;opacity:.9;white-space:nowrap}
+.enough-cta-action:hover,.enough-cta-action:focus-visible{opacity:1;text-decoration:underline}
+@media(max-width:550px){.enough-cta{gap:8px}.enough-cta-line{flex-basis:100%;height:0}.enough-cta-prompt{flex-basis:100%;text-align:center}}
+</style>
+<section class="section stack" id="cases" data-evidence-browse-context="Development evidence" data-evidence-forward-href="#where" data-evidence-forward-label="Workflows">
  <h2>
   Development evidence
  </h2>
  <p class="workflow-lead">
-  Three examples showing development ownership across electronics, embedded control, RF integration, and validation infrastructure. <a href="#proof">Detailed evidence</a> remains available further down the page.
+  Three examples showing development ownership across electronics, embedded control, RF integration, and validation infrastructure.
  </p>
  <div class="engagement-grid" data-nav-align-target>
   <article class="engagement-card project-case-card" data-evidence-return-source>
@@ -3570,6 +3691,21 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   </article>
  </div>
 </section>
+<div class="enough-cta" role="navigation" aria-label="Skip ahead to contact or CV request">
+ <span class="enough-cta-line"></span>
+ <span class="enough-cta-prompt">Enough already… where do I sign?</span>
+ <a class="enough-cta-action" href="#contact">Contact</a>
+ <a class="enough-cta-action" href="cv-request.html">Request a CV</a>
+ <span class="enough-cta-line"></span>
+</div>
+<style id="enough-cta-style">
+.enough-cta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px 0 24px;padding:9px 10px;color:inherit;font-size:12px;line-height:1.5}
+.enough-cta-line{height:1px;min-width:15px;flex:1 1 35px;background:currentColor;opacity:.17}
+.enough-cta-prompt{font-style:italic;opacity:.85}
+.enough-cta-action{display:inline-block;padding:4px 9px;border:1px solid currentColor;border-radius:6px;color:inherit;text-decoration:none;opacity:.9;white-space:nowrap}
+.enough-cta-action:hover,.enough-cta-action:focus-visible{opacity:1;text-decoration:underline}
+@media(max-width:550px){.enough-cta{gap:8px}.enough-cta-line{flex-basis:100%;height:0}.enough-cta-prompt{flex-basis:100%;text-align:center}}
+</style>
 <section class="section" id="where">
  <h2>
   Typical engineering entry points
@@ -4254,891 +4390,21 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   </div>
  </div>
 </section>
-<section class="section" id="outputs">
- <h2>
-  Useful engineering outputs
- </h2>
- <div class="grid4">
-  <div class="card mini">
- <div class="kpi">01</div>
- <strong>Working subsystem or control path</strong>
- <div class="muted">A board, interface, RF path, firmware hook, or technical correction moved to a usable and measurable state.</div>
+<div class="enough-cta" role="navigation" aria-label="Skip ahead to contact or CV request">
+ <span class="enough-cta-line"></span>
+ <span class="enough-cta-prompt">Enough already… where do I sign?</span>
+ <a class="enough-cta-action" href="#contact">Contact</a>
+ <a class="enough-cta-action" href="cv-request.html">Request a CV</a>
+ <span class="enough-cta-line"></span>
 </div>
-
-  <div class="card mini">
- <div class="kpi">02</div>
- <strong>Repeatable measurement and validation path</strong>
- <div class="muted">Controlled captures, instrument setup, logged runs, acceptance evidence, and clearer comparison between revisions.</div>
-</div>
-
-  <div class="card mini">
- <div class="kpi">03</div>
- <strong>Firmware, tooling, or test infrastructure</strong>
- <div class="muted">Embedded support code, DUT control, instrument automation, operator tooling, or reusable test components.</div>
-</div>
-
-  <div class="card mini">
- <div class="kpi">04</div>
- <strong>Engineering handover and next decisions</strong>
- <div class="muted">Technical notes, evidence, known limits, recommended actions, and a path the team can continue after the assignment.</div>
-</div>
-
- </div>
-</section>
-<section class="section" id="proof">
- <h2>
-  Detailed engineering evidence
- </h2>
- <p class="workflow-lead">
-  Technical evidence behind the development cases and offer, linked to supporting work <a href="#chronology">history</a>.
- </p>
- <div class="wf-shell wf-shell-split" data-tabs="" data-nav-align-target>
-  <div class="wf-toolbar">
-   <span class="wf-dot wf-red">
-   </span>
-   <span class="wf-dot wf-amber">
-   </span>
-   <span class="wf-dot wf-green">
-   </span>
-   <span class="wf-path">
-    evidence / representative engineering work
-   </span>
-  </div>
-  <div class="wf-split">
-   <div aria-label="Selected proof tabs" class="wf-nav" role="tablist">
- <button aria-controls="panel-proof-rf" aria-selected="true" class="wf-nav-item active" data-tab-target="proof-rf" id="tab-proof-rf" role="tab" type="button">
-  <span class="wf-nav-index">
-   01
-  </span>
-  <span class="wf-nav-title">
-   RF chain debug
-  </span>
-  <span class="wf-nav-tag">
-   RF debug
-  </span>
- </button>
- <button aria-controls="panel-proof-board" aria-selected="false" class="wf-nav-item" data-tab-target="proof-board" id="tab-proof-board" role="tab" type="button">
-  <span class="wf-nav-index">
-   02
-  </span>
-  <span class="wf-nav-title">
-   Board-level bring-up
-  </span>
-  <span class="wf-nav-tag">
-   board bring-up
-  </span>
- </button>
- <button aria-controls="panel-proof-validation" aria-selected="false" class="wf-nav-item" data-tab-target="proof-validation" id="tab-proof-validation" role="tab" type="button">
-  <span class="wf-nav-index">
-   03
-  </span>
-  <span class="wf-nav-title">
-   Validation infrastructure
-  </span>
-  <span class="wf-nav-tag">
-   repeatability
-  </span>
- </button>
- <button aria-controls="panel-proof-power" aria-selected="false" class="wf-nav-item" data-tab-target="proof-power" id="tab-proof-power" role="tab" type="button">
-  <span class="wf-nav-index">
-   04
-  </span>
-  <span class="wf-nav-title">
-   Power correction work
-  </span>
-  <span class="wf-nav-tag">
-   power correction
-  </span>
- </button>
- <button aria-controls="panel-proof-firmware" aria-selected="false" class="wf-nav-item" data-tab-target="proof-firmware" id="tab-proof-firmware" role="tab" type="button">
-  <span class="wf-nav-index">
-   05
-  </span>
-  <span class="wf-nav-title">
-   Firmware observability
-  </span>
-  <span class="wf-nav-tag">
-   observability
-  </span>
- </button>
-</div>
-
-   <div class="wf-panels">
-    <section aria-labelledby="tab-proof-rf" class="wf-panel active" data-aspects="rf_firmware_boundary signal_path_debug instrument_driven_validation" id="panel-proof-rf" role="tabpanel">
- <div class="wf-console-line">
-  <span class="wf-prompt">
-   proof
-  </span>
-  <span class="wf-command">
-   RF evidence
-  </span>
- </div>
- <div aria-label="Proof view options" class="wf-viewbar" role="tablist">
-  <button aria-pressed="true" aria-selected="true" class="wf-view-tab active" data-view-target="tree" role="tab" type="button">
-   Tree view
-  </button>
-  <button aria-pressed="false" aria-selected="false" class="wf-view-tab" data-view-target="block" role="tab" type="button">
-   Notes view
-  </button>
- </div>
- <div class="wf-view-panel wf-view-block" data-view-panel="block" hidden="hidden">
-  <h3>
-   RF chain debug and transceiver fault isolation
-  </h3>
-  <p class="wf-cue">
-   UHF/VHF, secure-radio, and satellite-radio work involving real transceiver behaviour rather than only compliance execution.
-  </p>
-  <br>
-  <p>
-   Worked on RF paths where receiver or transmitter behaviour had to be isolated through bench measurement, firmware-assisted control, VNA matching, spectrum/chamber work, and board-level investigation.
-  </p>
-  <br>
-  <p>
-   The evidence base includes <a class="proof-evidence-link proof-notes-atomic" data-proof-context="RF path evidence tree — Representative proof" href="#ev-isis-trxvu-rf-bringup">CubeSat radios</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="RF path evidence tree — Representative proof" href="#ev-etherstack-ate-framework">secure P25 radio systems</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="RF path evidence tree — Representative proof" href="#ev-csr-bluetooth-validation">Bluetooth IC validation</a>, and <a class="proof-evidence-link proof-notes-atomic" data-proof-context="RF path evidence tree — Representative proof" href="#ev-mrb-cisco-lte-automation">LTE production test automation</a>.
-  </p>
-  <br>
-  <div class="wf-console-tip">
-   Evidence shape: transceiver bring-up, RF path diagnosis, VNA / spectrum / chamber work
-  </div>
- </div>
- <div class="wf-view-panel wf-view-tree active" data-view-panel="tree">
-  <div class="wf-tree-title">
-   RF evidence tree
-  </div>
-  <ul class="wf-tree">
-   <li>
-    <span>
-     Evidence domains
-    </span>
-    <ul>
-     <li>
-      UHF / VHF transceiver behaviour
-     </li>
-     <li>
-      Secure-radio RF systems
-     </li>
-     <li>
-      Satellite-radio / CubeSat paths
-     </li>
-     <li>
-      Bluetooth and LTE validation contexts
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Investigation methods
-    </span>
-    <ul>
-     <li>
-      Bench measurement
-     </li>
-     <li>
-      Firmware-assisted RF control
-     </li>
-     <li>
-      PA / PLL / VCO bring-up support
-     </li>
-     <li>
-      VNA-based matching
-     </li>
-     <li>
-      Spectrum / chamber work
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Fault isolation value
-    </span>
-    <ul>
-     <li>
-      Receiver path diagnosis
-     </li>
-     <li>
-      Transmitter path diagnosis
-     </li>
-     <li>
-      Board-level RF investigation
-     </li>
-     <li>
-      System context rather than isolated compliance only
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Representative proof
-    </span>
-    <ul>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-trxvu-rf-bringup">CubeSat radios</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-etherstack-ate-framework">Secure P25 radio systems</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-csr-bluetooth-validation">Bluetooth IC validation</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-mrb-cisco-lte-automation">LTE production test automation</a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </div>
-</section>
-
-    <section aria-labelledby="tab-proof-board" class="wf-panel" data-aspects="board_level_bringup pcb_adjacent_debug device_subsystem_evaluation measurement_led_debug" hidden="" id="panel-proof-board" role="tabpanel">
- <div class="wf-console-line">
-  <span class="wf-prompt">
-   proof
-  </span>
-  <span class="wf-command">
-   Board-level evidence
-  </span>
- </div>
- <div aria-label="Proof view options" class="wf-viewbar" role="tablist">
-  <button aria-pressed="true" aria-selected="true" class="wf-view-tab active" data-view-target="tree" role="tab" type="button">
-   Tree view
-  </button>
-  <button aria-pressed="false" aria-selected="false" class="wf-view-tab" data-view-target="block" role="tab" type="button">
-   Notes view
-  </button>
- </div>
- <div class="wf-view-panel wf-view-block" data-view-panel="block" hidden="hidden">
-  <h3>
-   Board-level bring-up
-  </h3>
-  <p class="wf-cue">
-   Prototype blockers often sit at board level: rails, clocks, resets, IO, support circuitry, layout assumptions, or signal access.
-  </p>
-  <br>
-  <p>
-   Worked on multilayer PCB debug across R&amp;D and production contexts, including board bring-up, schematic / layout review, correction-path definition, and PCB spin oversight from design inputs through fabrication and handover.
-  </p>
-  <br>
-  <p>
-   The evidence base includes <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Board-level evidence tree — Representative proof" href="#ev-isis-battery-platform">battery test platform PCB work</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Board-level evidence tree — Representative proof" href="#ev-isis-smps-correction">SMPS board-level correction</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Board-level evidence tree — Representative proof" href="#ev-precision-ohmmeter-control">precision measurement board work</a>, and <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Board-level evidence tree — Representative proof" href="#ev-hearing-assist-dsp-config">custom DSP / PIC24 board integration</a>.
-  </p>
-  <br>
-  <div class="wf-console-tip">
-   Evidence shape: board bring-up, multilayer PCB debug, schematic / layout review, correction paths, PCB spin oversight
-  </div>
- </div>
- <div class="wf-view-panel wf-view-tree active" data-view-panel="tree">
-  <div class="wf-tree-title">
-   Board-level evidence tree
-  </div>
-  <ul class="wf-tree">
-   <li>
-    <span>
-     Evidence domains
-    </span>
-    <ul>
-     <li>
-      Multilayer PCB debug
-     </li>
-     <li>
-      R&amp;D and production board contexts
-     </li>
-     <li>
-      Prototype and subsystem bring-up
-     </li>
-     <li>
-      PCB spin oversight through fabrication and handover
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Board-state checks
-    </span>
-    <ul>
-     <li>
-      Rails, clocks, resets, and boot conditions
-     </li>
-     <li>
-      IO state, connector paths, and signal access
-     </li>
-     <li>
-      Loading, biasing, compensation, and support circuitry
-     </li>
-     <li>
-      Schematic / layout assumptions against measured behaviour
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Bring-up value
-    </span>
-    <ul>
-     <li>
-      Separate board behaviour from setup, firmware, or part-assumption errors
-     </li>
-     <li>
-      Identify correction paths before the next spin
-     </li>
-     <li>
-      Make board-level uncertainty explicit for validation or handover
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Representative proof
-    </span>
-    <ul>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-battery-platform">Battery test platform PCB work</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-smps-correction">SMPS board-level correction</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-precision-ohmmeter-control">Precision measurement board work</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-hearing-assist-dsp-config">Custom DSP / PIC24 board integration</a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </div>
-</section>
-
-    <section aria-labelledby="tab-proof-validation" class="wf-panel" data-aspects="validation_automation legacy_test_uplift handover_ready_test_flows" hidden="" id="panel-proof-validation" role="tabpanel">
- <div class="wf-console-line">
-  <span class="wf-prompt">
-   proof
-  </span>
-  <span class="wf-command">
-   Validation evidence
-  </span>
- </div>
- <div aria-label="Proof view options" class="wf-viewbar" role="tablist">
-  <button aria-pressed="true" aria-selected="true" class="wf-view-tab active" data-view-target="tree" role="tab" type="button">
-   Tree view
-  </button>
-  <button aria-pressed="false" aria-selected="false" class="wf-view-tab" data-view-target="block" role="tab" type="button">
-   Notes view
-  </button>
- </div>
- <div class="wf-view-panel wf-view-block" data-view-panel="block" hidden="hidden">
-  <h3>
-   Validation infrastructure uplift
-  </h3>
-  <p class="wf-cue">
-   Characterisation and production-facing test flows needed more control, repeatability, and handover value.
-  </p>
-  <br>
-  <p>
-   Built and improved validation setups using Tcl, SCPI, GPIB, Python, serial interfaces, and custom embedded control paths.
-  </p>
-  <br>
-  <p>
-   The evidence base includes <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Validation automation evidence tree — Representative proof" href="#ev-etherstack-ate-framework">secure-radio BER and sensitivity automation</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Validation automation evidence tree — Representative proof" href="#ev-isis-validation-uplift">CubeSat radio framework uplift</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Validation automation evidence tree — Representative proof" href="#ev-mrb-cisco-lte-automation">Cisco LTE factory automation</a>, and <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Validation automation evidence tree — Representative proof" href="#ev-isis-validation-uplift">lower-overhead RF stress-test tooling</a>.
-  </p>
-  <br>
-  <div class="wf-console-tip">
-   Evidence shape: ATE frameworks, instrument control, repeatable characterisation flows
-  </div>
- </div>
- <div class="wf-view-panel wf-view-tree active" data-view-panel="tree">
-  <div class="wf-tree-title">
-   Validation evidence tree
-  </div>
-  <ul class="wf-tree">
-   <li>
-    <span>
-     Evidence domains
-    </span>
-    <ul>
-     <li>
-      Characterisation flows
-     </li>
-     <li>
-      Production-facing test
-     </li>
-     <li>
-      Engineering validation setups
-     </li>
-     <li>
-      Legacy ATE improvement
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Tooling paths
-    </span>
-    <ul>
-     <li>
-      Tcl and existing test frameworks
-     </li>
-     <li>
-      SCPI / GPIB instrument control
-     </li>
-     <li>
-      Python helper tools
-     </li>
-     <li>
-      Serial and embedded control interfaces
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Improvement target
-    </span>
-    <ul>
-     <li>
-      Repeatability
-     </li>
-     <li>
-      Lower operator overhead
-     </li>
-     <li>
-      Better logging
-     </li>
-     <li>
-      Comparable run evidence
-     </li>
-     <li>
-      Handover value
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Representative proof
-    </span>
-    <ul>
-     <li>
-      <a class="proof-evidence-link" href="#ev-etherstack-ate-framework">Secure-radio BER and sensitivity automation</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-validation-uplift">CubeSat radio framework uplift</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-mrb-cisco-lte-automation">Cisco LTE factory automation</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-validation-uplift">RF stress-test tooling</a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </div>
-</section>
-
-    <section aria-labelledby="tab-proof-power" class="wf-panel" data-aspects="measurement_led_debug power_analogue_correction device_subsystem_evaluation" hidden="" id="panel-proof-power" role="tabpanel">
- <div class="wf-console-line">
-  <span class="wf-prompt">
-   proof
-  </span>
-  <span class="wf-command">
-   Power evidence
-  </span>
- </div>
- <div aria-label="Proof view options" class="wf-viewbar" role="tablist">
-  <button aria-pressed="true" aria-selected="true" class="wf-view-tab active" data-view-target="tree" role="tab" type="button">
-   Tree view
-  </button>
-  <button aria-pressed="false" aria-selected="false" class="wf-view-tab" data-view-target="block" role="tab" type="button">
-   Notes view
-  </button>
- </div>
- <div class="wf-view-panel wf-view-block" data-view-panel="block" hidden="hidden">
-  <h3>
-   Power and analogue correction work
-  </h3>
-  <p class="wf-cue">
-   Unstable or marginal power behaviour required measurement-led correction, not ad hoc tuning.
-  </p>
-  <br>
-  <p>
-   Investigated and corrected power / analogue behaviour in aircraft and space-system contexts, including current-source ringing correction and Type II compensation redesign for a synchronous converter.
-  </p>
-  <br>
-  <p>
-   Relevant failure modes included rails, pulsed loads, stability, noise, and analogue interaction with firmware-controlled behaviour.
-  </p>
-<br/>
-<p>
-   The evidence base includes <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Power and analogue evidence tree — Representative proof" href="#ev-mrb-eaton-power-debug">current-source ringing correction</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Power and analogue evidence tree — Representative proof" href="#ev-isis-smps-correction">Type II compensation redesign</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Power and analogue evidence tree — Representative proof" href="#ev-isis-smps-correction">synchronous converter work</a>, and <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Power and analogue evidence tree — Representative proof" href="#ev-precision-ohmmeter-control">measurement-led corrective changes</a>.
-  </p>
-  <br>
-  <div class="wf-console-tip">
-   Evidence shape: instability diagnosis, pulsed loads, compensation work, corrective changes
-  </div>
- </div>
- <div class="wf-view-panel wf-view-tree active" data-view-panel="tree">
-  <div class="wf-tree-title">
-   Power evidence tree
-  </div>
-  <ul class="wf-tree">
-   <li>
-    <span>
-     Evidence domains
-    </span>
-    <ul>
-     <li>
-      Power and analogue behaviour
-     </li>
-     <li>
-      Aircraft and space-system contexts
-     </li>
-     <li>
-      Marginal or unstable rail behaviour
-     </li>
-     <li>
-      Firmware-controlled hardware interactions
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Failure modes
-    </span>
-    <ul>
-     <li>
-      Rail instability
-     </li>
-     <li>
-      Pulsed loads
-     </li>
-     <li>
-      Noise and ringing
-     </li>
-     <li>
-      Analogue interaction
-     </li>
-     <li>
-      Compensation error
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Correction path
-    </span>
-    <ul>
-     <li>
-      Measure the behaviour
-     </li>
-     <li>
-      Identify stability / load condition
-     </li>
-     <li>
-      Change the circuit or compensation path
-     </li>
-     <li>
-      Verify under realistic conditions
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Representative proof
-    </span>
-    <ul>
-     <li>
-      <a class="proof-evidence-link" href="#ev-mrb-eaton-power-debug">Current-source ringing correction</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-smps-correction">Type II compensation redesign</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-smps-correction">Synchronous converter work</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-precision-ohmmeter-control">Measurement-led corrective changes</a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </div>
-</section>
-
-    <section aria-labelledby="tab-proof-firmware" class="wf-panel" data-aspects="firmware_assisted_observability dut_control_tooling hardware_firmware_integration" hidden="" id="panel-proof-firmware" role="tabpanel">
- <div class="wf-console-line">
-  <span class="wf-prompt">
-   proof
-  </span>
-  <span class="wf-command">
-   Observability evidence
-  </span>
- </div>
- <div aria-label="Proof view options" class="wf-viewbar" role="tablist">
-  <button aria-pressed="true" aria-selected="true" class="wf-view-tab active" data-view-target="tree" role="tab" type="button">
-   Tree view
-  </button>
-  <button aria-pressed="false" aria-selected="false" class="wf-view-tab" data-view-target="block" role="tab" type="button">
-   Notes view
-  </button>
- </div>
- <div class="wf-view-panel wf-view-block" data-view-panel="block" hidden="hidden">
-  <h3>
-   Firmware-assisted observability during bring-up
-  </h3>
-  <p class="wf-cue">
-   Subsystems needed extra control and visibility before hardware behaviour could be judged properly.
-  </p>
-  <br>
-  <p>
-   Added embedded control paths, register-level access, interface tooling, LCD / I2C support, DSP configuration writes, DUT control scripts, and low-level driver work.
-  </p>
-  <br>
-  <p>
-   The purpose was to make hardware behaviour driveable and observable during bring-up, rather than leaving the team to infer hidden state from external symptoms alone.
-  </p>
-<br/>
-<p>
-   The evidence base includes <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Observability evidence tree — Representative proof" href="#ev-isis-trxvu-rf-bringup">firmware hooks</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Observability evidence tree — Representative proof" href="#ev-isis-trxvu-rf-bringup">register control</a>, <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Observability evidence tree — Representative proof" href="#ev-hearing-assist-dsp-config">DUT visibility</a>, and <a class="proof-evidence-link proof-notes-atomic" data-proof-context="Observability evidence tree — Representative proof" href="#ev-pcie-dma-driver-stack">low-level hardware interfaces</a>.
-  </p>
-  <br>
-  <div class="wf-console-tip">
-   Evidence shape: firmware hooks, register control, DUT visibility, low-level interfaces
-  </div>
- </div>
- <div class="wf-view-panel wf-view-tree active" data-view-panel="tree">
-  <div class="wf-tree-title">
-   Observability evidence tree
-  </div>
-  <ul class="wf-tree">
-   <li>
-    <span>
-     Evidence domains
-    </span>
-    <ul>
-     <li>
-      Hardware needs controllability before judgement
-     </li>
-     <li>
-      Subsystem behaviour hidden behind missing access
-     </li>
-     <li>
-      Bring-up blocked by poor visibility
-     </li>
-     <li>
-      Register-level state needs exposure
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Control hooks
-    </span>
-    <ul>
-     <li>
-      Embedded control paths
-     </li>
-     <li>
-      Register access
-     </li>
-     <li>
-      DUT control scripts
-     </li>
-     <li>
-      Low-level drivers
-     </li>
-     <li>
-      Interface tooling
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Visibility paths
-    </span>
-    <ul>
-     <li>
-      LCD / I2C support
-     </li>
-     <li>
-      DSP configuration writes
-     </li>
-     <li>
-      Serial interfaces
-     </li>
-     <li>
-      Firmware-assisted test states
-     </li>
-    </ul>
-   </li>
-   <li>
-    <span>
-     Representative proof
-    </span>
-    <ul>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-trxvu-rf-bringup">Firmware hooks</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-isis-trxvu-rf-bringup">Register control</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-hearing-assist-dsp-config">DUT visibility</a>
-     </li>
-     <li>
-      <a class="proof-evidence-link" href="#ev-pcie-dma-driver-stack">Low-level hardware interfaces</a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </div>
-</section>
-
-   </div>
-  </div>
- </div>
-</section>
-<section class="section" id="bench">
- <h2>
-  Independent bench capability
- </h2>
- <div class="callout" style="margin-bottom:18px;">
-  <p>
-   I maintain a practical embedded and RF-adjacent workbench for firmware and control-path development, early board investigation, measurement tooling, interface reproduction, prototype support, and preparation for focused client-lab work.
-  </p>
- </div>
- <div class="intro-split">
-  <div class="callout intro-copy">
-   <p>
-    This is not a compliance lab or a substitute for calibrated RF certification work. It is a working engineering bench for developing control and measurement paths, reproducing interface behaviour, and getting uncertain hardware into a measurable state.
-   </p>
-   <div aria-label="Bench picture viewer" class="bench-pic-viewer" data-bench-pic-viewer>
- <div class="bench-pic-windowbar" aria-hidden="true">
-  <span class="bench-pic-dot bench-pic-red"></span>
-  <span class="bench-pic-dot bench-pic-amber"></span>
-  <span class="bench-pic-dot bench-pic-green"></span>
-  <span class="bench-pic-windowtitle">bench_pictures / capability_evidence</span>
- </div>
- <div aria-label="Bench image set" class="bench-pic-tabs" role="tablist">
-    <button aria-controls="bench-pic-panel-1" aria-selected="false" class="bench-pic-tab" id="bench-pic-tab-1" role="tab" type="button">Multi-channel Li-ion precision characterisation setup</button>
-    <button aria-controls="bench-pic-panel-2" aria-selected="false" class="bench-pic-tab" id="bench-pic-tab-2" role="tab" type="button">Pear 01 pcb on bench</button>
-    <button aria-controls="bench-pic-panel-3" aria-selected="false" class="bench-pic-tab" id="bench-pic-tab-3" role="tab" type="button">Prototyping bench</button>
-    <button aria-controls="bench-pic-panel-4" aria-selected="true" class="bench-pic-tab active" id="bench-pic-tab-4" role="tab" type="button">Prototyping bench</button>
- </div>
- <div class="bench-pic-stage">
-   <figure aria-labelledby="bench-pic-tab-1" class="bench-pic-panel" id="bench-pic-panel-1" role="tabpanel" hidden>
-    <img alt="“Rev A was designed and prototyped independently on the personal bench and equipment that later became the Unstuck Engineering lab. The Rev B PCBs shown here are from subsequent post-handover validation on a company workbench. Identifying workplace details have been removed.”" loading="lazy" src="resources/bench_pics/01_multichannel_validation_setup.webp"/>
-    <figcaption>
-     <span>Multi-channel Li-ion precision characterisation setup</span>
-     “Rev A was designed and prototyped independently on the personal bench and equipment that later became the Unstuck Engineering lab. The Rev B PCBs shown here are from subsequent post-handover validation on a company workbench. Identifying workplace details have been removed.”
-    </figcaption>
-   </figure>
-   <figure aria-labelledby="bench-pic-tab-2" class="bench-pic-panel" id="bench-pic-panel-2" role="tabpanel" hidden>
-    <img alt="Pear 01 pcb on bench" loading="lazy" src="resources/bench_pics/02_pear-01_pcb_on_bench.webp"/>
-    <figcaption>
-     <span>Pear 01 pcb on bench</span>
-     Pear 01 pcb on bench
-    </figcaption>
-   </figure>
-   <figure aria-labelledby="bench-pic-tab-3" class="bench-pic-panel" id="bench-pic-panel-3" role="tabpanel" hidden>
-    <img alt="Prototyping bench" loading="lazy" src="resources/bench_pics/03_prototyping_bench.webp"/>
-    <figcaption>
-     <span>Prototyping bench</span>
-     Prototyping bench
-    </figcaption>
-   </figure>
-   <figure aria-labelledby="bench-pic-tab-4" class="bench-pic-panel active" id="bench-pic-panel-4" role="tabpanel">
-    <img alt="Prototyping bench" loading="lazy" src="resources/bench_pics/04_prototyping_bench.webp"/>
-    <figcaption>
-     <span>Prototyping bench</span>
-     Prototyping bench
-    </figcaption>
-   </figure>
- </div>
-</div>
-<script>
-(function(){
-  document.querySelectorAll('[data-bench-pic-viewer]').forEach((viewer) => {
-    const tabs = Array.from(viewer.querySelectorAll('.bench-pic-tab'));
-    const panels = Array.from(viewer.querySelectorAll('.bench-pic-panel'));
-    const activate = (tab) => {
-      const targetId = tab.getAttribute('aria-controls');
-      tabs.forEach((candidate) => {
-        const active = candidate === tab;
-        candidate.classList.toggle('active', active);
-        candidate.setAttribute('aria-selected', active ? 'true' : 'false');
-      });
-      panels.forEach((panel) => {
-        const active = panel.id === targetId;
-        panel.classList.toggle('active', active);
-        panel.hidden = !active;
-      });
-    };
-    tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => activate(tab));
-      tab.addEventListener('keydown', (event) => {
-        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
-        event.preventDefault();
-        const delta = event.key === 'ArrowRight' ? 1 : -1;
-        const next = tabs[(index + delta + tabs.length) % tabs.length];
-        next.focus();
-        activate(next);
-      });
-    });
-  });
-})();
-</script>
-
-  </div>
-  <div aria-label="Home workbench equipment" class="capability-list">
-   <span class="capability-item">
- Oscilloscope
-</span>
-
-   <span class="capability-item">
- PSU / DMM
-</span>
-
-   <span class="capability-item">
- Electronic load
-</span>
-
-   <span class="capability-item">
- Function generator
-</span>
-
-   <span class="capability-item">
- Current source
-</span>
-
-   <span class="capability-item">
- Pico-ammeter
-</span>
-
-   <span class="capability-item">
- Isolation amplifier
-</span>
-
-   <span class="capability-item">
- Programmable resistor array
-</span>
-
-   <span class="capability-item">
- Logic analyser
-</span>
-
-   <span class="capability-item">
- Development boards
-</span>
-
-   <span class="capability-item">
- Microscope
-</span>
-
-   <span class="capability-item">
- Weller solder station
-</span>
-
-  </div>
- </div>
-</section>
+<style id="enough-cta-style">
+.enough-cta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px 0 24px;padding:9px 10px;color:inherit;font-size:12px;line-height:1.5}
+.enough-cta-line{height:1px;min-width:15px;flex:1 1 35px;background:currentColor;opacity:.17}
+.enough-cta-prompt{font-style:italic;opacity:.85}
+.enough-cta-action{display:inline-block;padding:4px 9px;border:1px solid currentColor;border-radius:6px;color:inherit;text-decoration:none;opacity:.9;white-space:nowrap}
+.enough-cta-action:hover,.enough-cta-action:focus-visible{opacity:1;text-decoration:underline}
+@media(max-width:550px){.enough-cta{gap:8px}.enough-cta-line{flex-basis:100%;height:0}.enough-cta-prompt{flex-basis:100%;text-align:center}}
+</style>
 <section class="section" id="chronology">
  <h2>
   Engineering chronology
@@ -5678,6 +4944,21 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
   </div>
  </div>
 </section>
+<div class="enough-cta" role="navigation" aria-label="Skip ahead to contact or CV request">
+ <span class="enough-cta-line"></span>
+ <span class="enough-cta-prompt">Enough already… where do I sign?</span>
+ <a class="enough-cta-action" href="#contact">Contact</a>
+ <a class="enough-cta-action" href="cv-request.html">Request a CV</a>
+ <span class="enough-cta-line"></span>
+</div>
+<style id="enough-cta-style">
+.enough-cta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px 0 24px;padding:9px 10px;color:inherit;font-size:12px;line-height:1.5}
+.enough-cta-line{height:1px;min-width:15px;flex:1 1 35px;background:currentColor;opacity:.17}
+.enough-cta-prompt{font-style:italic;opacity:.85}
+.enough-cta-action{display:inline-block;padding:4px 9px;border:1px solid currentColor;border-radius:6px;color:inherit;text-decoration:none;opacity:.9;white-space:nowrap}
+.enough-cta-action:hover,.enough-cta-action:focus-visible{opacity:1;text-decoration:underline}
+@media(max-width:550px){.enough-cta{gap:8px}.enough-cta-line{flex-basis:100%;height:0}.enough-cta-prompt{flex-basis:100%;text-align:center}}
+</style>
 <section class="section cta" id="contact" data-nav-align-target>
  <div class="contact-layout">
   <div class="contact-copy">
@@ -7736,5 +7017,54 @@ body::before{box-shadow:0 18px 40px rgba(0,0,0,.22) !important;}
 })();
 </script>
 
+<script id="v5-main-nav-current-section">
+(function(){
+  const nav=document.querySelector('.topbar .topbar-nav');
+  if(!nav)return;
+  const targets=Array.from(nav.querySelectorAll('a[href^="#"]'))
+    .map(link=>({link,id:decodeURIComponent(link.getAttribute('href').slice(1))}))
+    .map(item=>({...item,section:document.getElementById(item.id)}))
+    .filter(item=>item.section);
+  if(!targets.length)return;
+  let current=null;
+  let scheduled=false;
+  function highlight(link){
+    if(link===current)return;
+    targets.forEach(item=>{
+      if(item.link===link)item.link.setAttribute('aria-current','location');
+      else item.link.removeAttribute('aria-current');
+    });
+    current=link;
+  }
+  function update(){
+    scheduled=false;
+    const bottom=document.documentElement.scrollHeight-window.innerHeight-window.scrollY;
+    // The Contact panel can be shorter than the viewport: mark it at page end.
+    if(bottom<3){highlight(targets[targets.length-1].link);return;}
+    const header=document.querySelector('.topbar');
+    const cutoff=(header?Math.min(96,header.getBoundingClientRect().height):74)
+      +Math.min(85,window.innerHeight*.12);
+    let best=targets[0];
+    for(const item of targets){
+      if(item.section.getBoundingClientRect().top<=cutoff)best=item;
+      else break;
+    }
+    highlight(best.link);
+  }
+  function schedule(){
+    if(!scheduled){scheduled=true;window.requestAnimationFrame(update);}
+  }
+  targets.forEach(item=>item.link.addEventListener('click',()=>{
+    highlight(item.link);
+    // Native anchor scrolling may be smooth; the scroll listener keeps pace.
+    schedule();
+  }));
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('hashchange',schedule);
+  window.addEventListener('load',schedule);
+  schedule();
+})();
+</script>
 </body>
 </html>

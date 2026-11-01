@@ -98,8 +98,66 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
 .cv-gallery-full img{flex-shrink:0;cursor:grab;user-select:none;-webkit-user-drag:none}
 .cv-gallery-full.is-dragging img{cursor:grabbing}
 .cv-gallery-full.is-zoomed img{max-width:none;max-height:none}
+</style><style id="cv-site-topbar-continuity">
+/* Match the main site's two-image company lockup, role line and site navigation. */
+:root{--cv-site-bar-height:74px}
+body>.site-topbar{position:relative;z-index:900;height:var(--cv-site-bar-height);min-height:var(--cv-site-bar-height);width:100%;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:14px;padding:0 max(20px,calc((100vw - 1240px)/2 + 14px));background:#20272b;border:0;border-bottom:1px solid rgba(239,228,206,.18);box-shadow:0 10px 26px rgba(0,0,0,.23)}
+.site-topbar-brand{display:flex;align-items:center;gap:12px;min-width:0;flex:0 1 auto}
+.site-company-lockup{display:flex;align-items:center;gap:9px;flex:0 0 auto;min-width:0;text-decoration:none}
+.site-symbol{display:block;object-fit:contain;width:42px;height:36px;flex:0 0 42px;background:#fff;border:1px solid rgba(255,255,255,.32);box-shadow:0 7px 18px rgba(0,0,0,.18)}
+.site-wordmark{display:block;object-fit:contain;width:145px;height:auto;flex:0 0 145px}
+.site-role{font:13px/1.3 Arial,Helvetica,sans-serif;color:#c3c0b8;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.site-topbar-nav{display:flex;flex:0 1 auto;align-items:center;flex-wrap:nowrap;gap:clamp(5px,.8vw,11px);min-width:0}
+.site-topbar-nav a{display:block;padding:7px clamp(5px,.6vw,9px);border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);color:#efe4d0;font:700 12px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.055em;text-decoration:none;white-space:nowrap}
+.site-topbar-nav a:hover,.site-topbar-nav a:focus-visible{background:rgba(255,255,255,.13);color:#fff6e8}
+.site-topbar-nav a[aria-current="page"]{border-color:#aab3bd;background:rgba(255,255,255,.14);color:#fff}
+.site-topbar-menu{display:none}
+body>main{height:calc(100dvh - var(--cv-site-bar-height))}
+@media(max-width:1180px) and (min-width:981px){
+ .site-role{display:none}
+}
+@media(max-width:980px) and (min-width:641px){
+ body>.site-topbar{height:auto;min-height:74px;flex-wrap:wrap;gap:8px;padding:10px 18px}
+ .site-topbar-brand{flex:1 1 auto}
+ .site-role{white-space:normal}
+ .site-topbar-nav{flex:1 1 100%;overflow-x:auto;padding-bottom:2px}
+ body>main{height:auto;min-height:calc(100dvh - 115px)}
+}
+@media(max-width:640px){
+ body>.site-topbar{position:fixed;top:0;left:0;right:0;height:40px;min-height:40px;display:grid;grid-template-columns:minmax(0,1fr) 36px;gap:6px;padding:0 7px 0 10px}
+ .site-topbar-brand{min-width:0;gap:0}
+ .site-company-lockup{gap:7px;overflow:hidden}
+ .site-symbol{width:34px;height:30px;flex-basis:34px}
+ .site-wordmark{width:120px;flex-basis:120px}
+ .site-role{display:none}
+ .site-topbar-menu{display:inline-flex;justify-content:center;align-items:center;height:34px;width:34px;border:0;border-radius:10px;background:transparent;color:#f5ead8;font:800 16px/1 Arial,Helvetica,sans-serif;cursor:pointer}
+ .site-topbar-menu:hover,.site-topbar-menu:focus-visible{background:rgba(255,255,255,.12);outline:2px solid rgba(255,255,255,.22)}
+ .site-topbar-nav{position:absolute;top:100%;left:0;right:0;z-index:901;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:8px 8px 10px;border-bottom:1px solid rgba(255,255,255,.15);background:#20272b;box-shadow:0 14px 20px rgba(0,0,0,.32);visibility:hidden;opacity:0;pointer-events:none;transform:translateY(-5px);transition:opacity .15s ease,transform .15s ease,visibility 0s linear .15s}
+ body.cv-nav-open .site-topbar-nav{visibility:visible;opacity:1;pointer-events:auto;transform:none;transition:opacity .15s ease,transform .15s ease}
+ .site-topbar-nav a{display:flex;align-items:center;justify-content:center;min-height:34px;padding:8px 5px;font-size:10.5px;text-align:center;letter-spacing:.04em}
+ body>main{height:auto;min-height:calc(100dvh - 40px);margin-top:40px}
+}
+@media(prefers-reduced-motion:reduce){.site-topbar-nav{transition:none!important}}
 </style></head>
-<body><header><a class="brand" href="index.html#intro"><img alt="Unstuck Engineering" src="resources/branding/unstuck-engineering-wordmark-light.png"></a><nav aria-label="Website navigation"><a href="index.html#intro">Overview</a><a href="index.html#engagements">Offer</a><a href="index.html#cases">Cases</a><a href="index.html#proof">Evidence</a><a href="index.html#chronology">History</a><a href="cv-request.html" aria-current="page">Request a CV</a><a href="index.html#contact">Contact</a></nav></header>
+<body><header class="site-topbar" aria-label="Page navigation">
+  <div class="site-topbar-brand">
+    <a class="site-company-lockup" href="index.html#intro" aria-label="Unstuck Engineering — page overview">
+      <img class="site-symbol" alt="" src="resources/branding/unstuck-symbol-white.png">
+      <img class="site-wordmark" alt="Unstuck Engineering" src="resources/branding/unstuck-engineering-wordmark-light.png">
+    </a>
+    <span class="site-role">RF / electronics / embedded development &amp; integration support</span>
+  </div>
+  <button class="site-topbar-menu" type="button" aria-controls="cv-section-menu" aria-expanded="false" aria-label="Open section navigation" title="Open section navigation">▾</button>
+  <nav class="site-topbar-nav" id="cv-section-menu" aria-label="Website navigation">
+    <a href="index.html#intro">Overview</a>
+    <a href="index.html#engagements">Offer</a>
+    <a href="index.html#cases">Cases</a>
+    <a href="index.html#where">Entry points</a>
+    <a href="index.html#chronology">History</a>
+    <a href="cv-request.html" aria-current="page">Request a CV</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
 <main><section class="request" aria-labelledby="cv-heading"><h1 id="cv-heading">Explore engineering capabilities</h1><p class="intro">Interested in a particular area of my work? Select a technical profile and I'll send more details. No obligation or project specification needed.</p>
 <form id="cv-request-form"><fieldset><legend>I'm interested in...</legend>
 <label class="choice"><input type="checkbox" name="areas" value="RF / microwave" checked>RF / microwave</label>
@@ -108,6 +166,18 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
 <label class="choice"><input type="checkbox" name="areas" value="Python / test automation">Python / test automation</label>
 <label class="choice"><input type="checkbox" name="areas" value="Measurement / validation">Measurement / validation</label>
 <label class="choice"><input type="checkbox" name="areas" value="Multidisciplinary / other">Multidisciplinary / other</label></fieldset>
+<div class="cv-fit-panel" aria-live="polite">
+ <strong>Suggested CV basis</strong>
+ <p id="cv-fit-recommendation">RF engineering</p>
+ <p class="cv-fit-hint">Suggested from the interests above. You can choose any one, combination, or all three CVs.</p>
+ <button type="button" id="cv-fit-apply">Use suggestion</button>
+</div>
+<fieldset class="cv-basis-choices"><legend>Choose CV basis (one or more)</legend>
+ <label class="choice"><input type="checkbox" name="cv_basis" value="rf" checked>RF engineering</label>
+ <label class="choice"><input type="checkbox" name="cv_basis" value="embedded">Embedded electronics / firmware</label>
+ <label class="choice"><input type="checkbox" name="cv_basis" value="python">Python / test automation</label>
+ <p class="cv-fit-hint" id="cv-basis-status" role="status">Selected: RF engineering</p>
+</fieldset>
 <fieldset><legend>Reason for interest (optional)</legend>
 <label class="choice"><input type="radio" name="reason" value="Just exploring possibilities">Just exploring possibilities</label>
 <label class="choice"><input type="radio" name="reason" value="Potential engineering project">Potential engineering project</label>
@@ -116,7 +186,7 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
 <label for="cv-organisation" class="fieldlabel">Organisation (optional)</label><input class="field" id="cv-organisation" name="organisation" autocomplete="organization" placeholder="Company name" maxlength="160">
 <label for="cv-message" class="fieldlabel">Message (optional)</label><textarea class="field" id="cv-message" name="message" placeholder="Anything useful to know" maxlength="2000" rows="2"></textarea>
 <p class="privacy">Contact details will only be used to respond to your request. No CV files are delivered automatically.</p><button type="submit" class="submit" disabled>Request a focused CV</button><p class="status" role="status">Requests are not yet enabled. Please use <a style="color:#cddbea" href="index.html#contact">Contact</a> for now.</p></form></section>
-<aside class="preview" aria-label="Illustrative CV previews"><button id="cv-debug-reveal" type="button" class="cv-obscure-toggle" hidden aria-expanded="false" aria-controls="cv-debug-tools">Show debug controls</button><div id="cv-debug-tools" class="cv-debug-tools" hidden><label class="cv-diff-toggle"><input id="cv-show-diffs" type="checkbox"> Show CV focus (yellow outlines)</label><button class="cv-obscure-toggle" id="cv-obscure" type="button" aria-pressed="false">Obscure main body</button><button type="button" id="cv-export-config" class="cv-obscure-toggle">Export config</button><textarea id="cv-config-output" readonly rows="3" aria-label="Exported viewer configuration" placeholder="Exported JSON appears here"></textarea><button type="button" id="cv-save-default" class="cv-obscure-toggle">Save as local default</button><small id="cv-config-status"></small></div><div class="documents" id="cv-gallery-stack" aria-label="Select a CV to view its two pages"><div class="cv-paper-rigid-group" id="cv-paper-rigid-group">
+<aside class="preview" aria-label="Illustrative CV previews"><button id="cv-debug-reveal" type="button" class="cv-obscure-toggle" hidden aria-expanded="false" aria-controls="cv-debug-tools">Show debug controls</button><div id="cv-debug-tools" class="cv-debug-tools" hidden><label class="cv-diff-toggle"><input id="cv-show-diffs" type="checkbox"> Show CV focus (yellow outlines)</label><label class="cv-diff-toggle"><input type="checkbox" id="cv-interest-colours"> Six-colour interest outlines (experimental)</label><button class="cv-obscure-toggle" id="cv-obscure" type="button" aria-pressed="false">Obscure main body</button><button type="button" id="cv-export-config" class="cv-obscure-toggle">Export config</button><textarea id="cv-config-output" readonly rows="3" aria-label="Exported viewer configuration" placeholder="Exported JSON appears here"></textarea><button type="button" id="cv-save-default" class="cv-obscure-toggle">Save as local default</button><small id="cv-config-status"></small></div><div class="documents" id="cv-gallery-stack" aria-label="Select a CV to view its two pages"><div class="cv-paper-rigid-group" id="cv-paper-rigid-group">
 <button class="cv-stack-marker cv-stack-marker--1" type="button" data-cv-label="embedded" aria-pressed="false"><span class="cv-stack-marker-no">1</span><span class="cv-stack-marker-name">Embedded</span></button>
 <button class="cv-stack-marker cv-stack-marker--2" type="button" data-cv-label="rf" aria-pressed="true"><span class="cv-stack-marker-no">2</span><span class="cv-stack-marker-name">RF Dev</span></button>
 <button class="cv-stack-marker cv-stack-marker--3" type="button" data-cv-label="python" aria-pressed="false"><span class="cv-stack-marker-no">3</span><span class="cv-stack-marker-name">Python Test</span></button>
@@ -126,7 +196,7 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
 <div class="cv-gallery-full" id="cv-gallery-full" aria-live="polite"><img id="cv-gallery-page" alt="Selected CV page"></div>
 
 </aside></main>
-<script>document.getElementById('cv-request-form').addEventListener('submit',function(e){e.preventDefault();});</script><script id="cv-gallery-controls">
+<script>document.getElementById('cv-request-form').addEventListener('submit',function(e){e.preventDefault();});</script><script src="resources/cv_previews/interest-map.js"></script><script id="cv-gallery-controls">
 (function(){
  const previews=[{id:'rf',label:'RF engineering'},{id:'embedded',label:'Embedded electronics'},{id:'python',label:'Python test automation'}];
  const pane=document.querySelector('.preview'), cards=Array.from(document.querySelectorAll('.document'));
@@ -152,6 +222,15 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
      label.style.left=x+'%';label.style.top=y+'%';
      label.style.transform='translate(-50%,calc(-100% - 8px)) rotate('+(10*Math.sin(angle))+'deg)';
    });
+   if(typeof syncAllColourLayers==='function'){
+     // Track the CSS transition so outlines stay attached while papers rotate.
+     const started=performance.now();
+     const follow=()=>{
+       syncAllColourLayers();
+       if(performance.now()-started<1080)requestAnimationFrame(follow);
+     };
+     requestAnimationFrame(follow);
+   }
  }
  function focusPaper(i){
    const target=-bases[i],turn=2*Math.PI;
@@ -194,7 +273,7 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
  const stackPages=[1,1,1];
  function refreshStackPages(){
    cards.forEach((card,i)=>{
-     card.src=imageURL(previews[i].id,stackPages[i]);
+     renderCVImage(card,previews[i].id,stackPages[i]);
      card.alt=previews[i].label+' CV, page '+stackPages[i]+' of 2';
    });
  }
@@ -205,7 +284,7 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
    if(event.ctrlKey){
      event.preventDefault();
      stackZoom=Math.max(1,Math.min(3,stackZoom+(event.deltaY<0?0.15:-0.15)));
-     cards.forEach(card=>{card.style.scale=stackZoom.toFixed(2)});
+     cards.forEach(card=>{card.style.scale=stackZoom.toFixed(2)});requestAnimationFrame(syncAllColourLayers);
      return;
    }
    if(event.altKey || event.metaKey || event.shiftKey || !event.deltaY)return;
@@ -247,6 +326,7 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
    // Preserve the visible centre when document dimensions change.
    full.scrollLeft=oldW ? (oldX+full.clientWidth/2)*(full.scrollWidth/oldW)-full.clientWidth/2 : 0;
    full.scrollTop=oldH ? (oldY+full.clientHeight/2)*(full.scrollHeight/oldH)-full.clientHeight/2 : 0;
+   requestAnimationFrame(syncAllColourLayers);
  }
  function resetZoom(){
    zoom=1;fitWidth=0;fitHeight=0;drag=null;
@@ -269,17 +349,101 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
  }
  const diffs=document.getElementById('cv-show-diffs');
  const obscure=document.getElementById('cv-obscure');
+ const colourToggle=document.getElementById('cv-interest-colours');
+ const interestBoxes=Array.from(document.querySelectorAll('#cv-request-form input[name="areas"]'));
  let obscured=false;
  const imageURL=(id,n)=>url(id,n)+(diffs.checked?'-diff':'')+(obscured?'-obscure':'')+'.webp';
+ // Experimental colour mode is available only via the file:// debug panel.
+ // Composite overlays on full-resolution images; keep original yellow mode untouched.
+ const colourLayers=new Map();
+ function colourLayer(element){
+   let layer=colourLayers.get(element);
+   if(!layer){
+     layer=document.createElementNS('http://www.w3.org/2000/svg','svg');
+     layer.setAttribute('viewBox','0 0 1000 1000');
+     layer.setAttribute('preserveAspectRatio','none');
+     layer.setAttribute('aria-hidden','true');
+     layer.style.cssText='position:absolute;pointer-events:none;overflow:visible;display:none';
+     element.parentElement.appendChild(layer);
+     colourLayers.set(element,layer);
+   }
+   return layer;
+ }
+ function syncColourLayer(element){
+   const layer=colourLayers.get(element);
+   if(!layer||layer.style.display==='none')return;
+   layer.style.left=element.offsetLeft+'px';
+   layer.style.top=element.offsetTop+'px';
+   layer.style.width=element.offsetWidth+'px';
+   layer.style.height=element.offsetHeight+'px';
+   layer.style.transform=getComputedStyle(element).transform;
+   layer.style.transformOrigin=getComputedStyle(element).transformOrigin;
+   layer.style.scale=getComputedStyle(element).scale;
+   layer.style.zIndex=element.classList.contains('is-selected')?'7':'3';
+ }
+ function syncAllColourLayers(){
+   cards.forEach(syncColourLayer);
+   syncColourLayer(page);
+ }
+ function renderCVImage(element,id,n){
+   const active=localFile&&colourToggle.checked&&window.CV_INTEREST_MAP;
+   // Always use the existing image resources; SVG does not need canvas access.
+   element.src=active
+     ?url(id,n)+(obscured?'-interest-obscure':'')+'.webp'
+     :imageURL(id,n);
+   const layer=colourLayer(element);
+   layer.replaceChildren();
+   layer.style.display=active?'block':'none';
+   if(!active)return;
+   const map=window.CV_INTEREST_MAP;
+   const areas=map.pages[id+'-p'+n]||{};
+   const interests=interestBoxes.filter(box=>box.checked).map(box=>box.value);
+   const overlaps=new Map();
+   for(const category of interests){
+     for(const bounds of areas[category]||[]){
+       const key=bounds.join(',');
+       const inset=(overlaps.get(key)||0)*7;
+       overlaps.set(key,(overlaps.get(key)||0)+1);
+       const rect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+       rect.setAttribute('x',bounds[0]*1000+inset);
+       rect.setAttribute('y',bounds[1]*1000+inset);
+       rect.setAttribute('width',Math.max(0,(bounds[2]-bounds[0])*1000-2*inset));
+       rect.setAttribute('height',Math.max(0,(bounds[3]-bounds[1])*1000-2*inset));
+       rect.setAttribute('rx','3');
+       rect.setAttribute('fill','none');
+       rect.setAttribute('stroke',map.categories[category]||'#e4bf4a');
+       rect.setAttribute('stroke-width','3.5');
+       layer.appendChild(rect);
+     }
+   }
+   requestAnimationFrame(()=>syncColourLayer(element));
+ }
+ function refreshAllCVImages(){
+   refreshStackPages();
+   if(view)renderCVImage(page,previews[selected].id,view);
+ }
+ colourToggle.addEventListener('change',()=>{
+   const status=document.getElementById('cv-config-status');
+   if(colourToggle.checked&&!window.CV_INTEREST_MAP){
+     colourToggle.checked=false;
+     status.textContent='Interest map failed to load. Regenerate it with python3 tools_content/render_cv_differences.py, then rebuild.';
+     return;
+   }
+   status.textContent='';
+   refreshAllCVImages();
+ });
+ interestBoxes.forEach(box=>box.addEventListener('change',()=>{
+   if(localFile&&colourToggle.checked)refreshAllCVImages();
+ }));
  obscure.addEventListener('click',()=>{
    obscured=!obscured;
    obscure.setAttribute('aria-pressed',String(obscured));
    refreshStackPages();
-   if(view)page.src=imageURL(previews[selected].id,view);
+   if(view)renderCVImage(page,previews[selected].id,view);
  });
  diffs.addEventListener('change',()=>{
    refreshStackPages();
-   if(view)page.src=imageURL(previews[selected].id,view);
+   if(view)renderCVImage(page,previews[selected].id,view);
  });
  function update(){
    const item=previews[selected];
@@ -287,7 +451,8 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
    cards.forEach((card,i)=>{card.classList.toggle('is-selected',i===selected);card.setAttribute('aria-pressed',String(i===selected))});
    labels.forEach(label=>label.setAttribute('aria-pressed',String(label.dataset.cvLabel===item.id)));
    resetZoom();
-   if(view){page.src=imageURL(item.id,view);page.alt=item.label+' CV, page '+view+' of 2'}
+   if(view){renderCVImage(page,item.id,view);page.alt=item.label+' CV, page '+view+' of 2'}
+   requestAnimationFrame(syncAllColourLayers);
 
  }
  function turnExpandedPage(targetPage){
@@ -438,5 +603,87 @@ fieldset{padding:0;border:0;margin:0 0 17px}legend,.fieldlabel{display:block;col
    try{const stored=localStorage.getItem(storageKey);if(stored)restore(JSON.parse(stored))}
    catch(error){status.textContent='No accessible saved local default.';}
  }
+})();
+</script><script id="cv-site-nav-control">
+(function(){
+ const bar=document.querySelector('.site-topbar');
+ const button=bar?.querySelector('.site-topbar-menu');
+ const nav=bar?.querySelector('.site-topbar-nav');
+ if(!button||!nav)return;
+ const media=window.matchMedia('(max-width:640px)');
+ function setOpen(open){
+  const on=Boolean(open&&media.matches);
+  document.body.classList.toggle('cv-nav-open',on);
+  button.setAttribute('aria-expanded',String(on));
+  button.setAttribute('aria-label',on?'Close section navigation':'Open section navigation');
+  button.textContent=on?'▴':'▾';
+ }
+ button.addEventListener('click',()=>setOpen(!document.body.classList.contains('cv-nav-open')));
+ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+ document.addEventListener('click',e=>{if(!bar.contains(e.target))setOpen(false)});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('cv-nav-open')){setOpen(false);button.focus()}});
+ window.addEventListener('resize',()=>{if(!media.matches)setOpen(false)});
+})();
+</script><style id="cv-fit-selection-style">
+.cv-fit-panel{margin:13px 0;padding:12px 14px;border:1px solid #495667;border-radius:8px;background:rgba(115,142,170,.09)}
+.cv-fit-panel strong{font-size:13px}
+.cv-fit-panel p{margin:6px 0;font-size:13px}
+.cv-fit-panel #cv-fit-recommendation{font-weight:600;color:#e3efff}
+.cv-fit-hint{font-size:12px!important;line-height:1.45;color:#b9c5d2}
+#cv-fit-apply{padding:6px 10px;border:1px solid #66798b;border-radius:6px;color:#e8eff6;background:#273442;cursor:pointer;font:inherit;font-size:12px}
+#cv-fit-apply:hover,#cv-fit-apply:focus-visible{background:#35485a}
+.cv-basis-choices{margin-bottom:15px}
+#cv-basis-status{margin:8px 0 0}
+</style>
+<script id="cv-fit-recommendation-control">
+(function(){
+ const form=document.getElementById('cv-request-form');
+ if(!form)return;
+ const interests=Array.from(form.querySelectorAll('input[name="areas"]'));
+ const basis=Array.from(form.querySelectorAll('input[name="cv_basis"]'));
+ const output=document.getElementById('cv-fit-recommendation');
+ const status=document.getElementById('cv-basis-status');
+ const apply=document.getElementById('cv-fit-apply');
+ const names={rf:'RF engineering',embedded:'Embedded electronics / firmware',python:'Python / test automation'};
+ const weights={
+  'RF / microwave':{rf:5,embedded:1,python:1},
+  'Analogue / power electronics':{rf:2,embedded:4,python:1},
+  'Embedded hardware / firmware':{rf:1,embedded:5,python:1},
+  'Python / test automation':{rf:1,embedded:1,python:5},
+  'Measurement / validation':{rf:3,embedded:2,python:4},
+  'Multidisciplinary / other':{rf:2,embedded:2,python:2}
+ };
+ let suggested=['rf'];
+ function getSuggestion(){
+  const chosen=interests.filter(el=>el.checked).map(el=>el.value);
+  if(!chosen.length)return [];
+  if(chosen.length===6)return ['rf','embedded','python'];
+  const score={rf:0,embedded:0,python:0};
+  chosen.forEach(k=>Object.keys(score).forEach(id=>score[id]+=(weights[k]?.[id]||0)));
+  const ordered=Object.keys(score).sort((a,b)=>score[b]-score[a]);
+  const best=score[ordered[0]];
+  return ordered.filter((id,index)=>index===0||score[id]>=best*.85);
+ }
+ function labelList(ids){return ids.map(id=>names[id]).join(' + ')}
+ function refreshRecommendation(){
+  suggested=getSuggestion();
+  output.textContent=suggested.length?labelList(suggested):'Select an area above for a suggestion';
+  apply.disabled=!suggested.length;
+  apply.setAttribute('aria-label','Select suggested CV basis');
+ }
+ function refreshSelection(){
+  const selected=basis.filter(box=>box.checked).map(box=>box.value);
+  status.textContent=selected.length?'Selected: '+labelList(selected):'No CV basis selected';
+ }
+ interests.forEach(box=>box.addEventListener('change',refreshRecommendation));
+ basis.forEach(box=>box.addEventListener('change',refreshSelection));
+ apply.addEventListener('click',()=>{
+  basis.forEach(box=>box.checked=suggested.includes(box.value));
+  refreshSelection();
+  const marker=document.querySelector('.cv-stack-marker[data-cv-label="'+suggested[0]+'"]');
+  if(marker)marker.click();
+ });
+ refreshRecommendation();
+ refreshSelection();
 })();
 </script></body></html>
